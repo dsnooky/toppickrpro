@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TopPickrPro Shop | Tools & Resources</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      line-height: 1.7;
+      color: #fff;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    a { text-decoration: none; color: inherit; }
+    header, nav, footer { 
+      /* same styles as index.html */
+      background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+      padding: 40px 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.65));
+      padding: 15px 20px;
+    }
+    nav a { color: #fff; font-weight: 500; transition: color 0.3s ease; }
+    nav a:hover { color: #ffeb3b; }
+
+    .header-container { display: flex; align-items: center; max-width: 1100px; margin: auto; gap: 20px; flex-wrap: wrap; }
+    header img.logo { width: 80px; height: 80px; border-radius: 12px; transition: transform 0.3s ease; }
+    header img.logo:hover { transform: rotate(-10deg) scale(1.05); }
+    header .header-text h1 { font-size: 2.8rem; margin: 0; font-weight: 700; color: #fff; }
+    header .header-text p { margin-top: 8px; max-width: 600px; font-size: 1rem; color: #eee; line-height: 1.5; }
+
+    section { max-width: 1100px; margin: auto; padding: 70px 20px; }
+    h2 { text-align: center; font-size: 2rem; margin-bottom: 25px; color: #fff; }
+
+    /* SHOP GRID */
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    .product {
+      border-radius: 15px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #fff;
+      text-align: center;
+    }
+    .product:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
+    .product img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
+    .product h3 { font-size: 1.2rem; margin-bottom: 8px; color: #ffeb3b; }
+    .product p { font-size: 1rem; margin-bottom: 12px; }
+    .product button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ffeb3b;
+      color: #222;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .product button:hover { background: #f7d600; }
+
+    footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #bbb; background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6)); }
+    footer a { color: #bbb; margin: 0 10px; transition: color 0.3s ease; }
+    footer a:hover { color: #ffeb3b; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <img src="favicon.png" alt="TopPickrPro Logo" class="logo">
+      <div class="header-text">
+        <h1>TopPickrPro Shop</h1>
+        <p>Browse tools, courses, and resources to help you earn money online.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="disclaimer.html">Disclaimer</a>
+  </nav>
+
+  <section id="shop">
+    <h2>Shop Our Products</h2>
+    <div class="shop-grid">
+      <div class="product">
+        <img src="product1.jpg" alt="E-book">
+        <h3>E-book: Beginner's Guide to Freelancing</h3>
+        <p>Price: $19.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product">
+        <img src="product2.jpg" alt="Online Course">
+        <h3>Course: Affiliate Marketing 101</h3>
+        <p>Price: $29.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product">
+        <img src="product3.jpg" alt="Tool Kit">
+        <h3>Toolkit: Essential Online Earning Resources</h3>
+        <p>Price: $49.99</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product">
+        <img src="product4.jpg" alt="Webinar">
+        <h3>Webinar: Mastering Online Skills</h3>
+        <p>Price: $9.99</p>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 TopPickrPro. All rights reserved.</p>
+    <p>
+      <a href="privacy-policy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a> |
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+</body>
+</html>
