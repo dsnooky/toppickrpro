@@ -10,52 +10,12 @@
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Open Graph Meta -->
-  <meta property="og:title" content="TopPickrPro | Learn Legit Ways to Earn Money Online">
-  <meta property="og:description" content="TopPickrPro teaches beginners legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toppickrpro.com">
-  <meta property="og:image" content="https://toppickrpro.com/favicon.png">
-  <meta property="og:site_name" content="TopPickrPro">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TopPickrPro | Learn Legit Ways to Earn Money Online">
-  <meta name="twitter:description" content="TopPickrPro teaches beginners legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills.">
-  <meta name="twitter:image" content="https://toppickrpro.com/favicon.png">
-
-  <!-- JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "TopPickrPro",
-    "url": "https://toppickrpro.com",
-    "description": "Educational website teaching beginners legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "TopPickrPro",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://toppickrpro.com/favicon.png"
-      }
-    },
-    "blogPost": [
-      {"@type": "BlogPosting", "headline": "How Beginners Can Earn Money Online Legitimately", "url": "https://toppickrpro.com/how-to-earn-money-online.html", "datePublished": "2026-01-03"},
-      {"@type": "BlogPosting", "headline": "Affiliate Marketing for Beginners", "url": "https://toppickrpro.com/affiliate-marketing-for-beginners.html", "datePublished": "2026-01-03"},
-      {"@type": "BlogPosting", "headline": "Best Online Skills That Pay Well", "url": "https://toppickrpro.com/best-online-skills-that-pay.html", "datePublished": "2026-01-03"},
-      {"@type": "BlogPosting", "headline": "How Freelancing Works", "url": "https://toppickrpro.com/how-freelancing-works.html", "datePublished": "2026-01-03"},
-      {"@type": "BlogPosting", "headline": "Online Money Scams to Avoid", "url": "https://toppickrpro.com/online-money-scams-to-avoid.html", "datePublished": "2026-01-03"}
-    ]
-  }
-  </script>
-
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* BODY WITH FULL SCREEN ANIMATED GRADIENT */
+    /* BODY */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -64,20 +24,18 @@
       background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
-      position: relative;
+      scroll-behavior: smooth;
     }
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     a { text-decoration: none; color: inherit; }
 
     /* HEADER */
     header {
-      background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-      color: #fff;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       padding: 40px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
@@ -96,15 +54,12 @@
       border-radius: 12px;
       transition: transform 0.3s ease;
     }
-    header img.logo:hover {
-      transform: rotate(-10deg) scale(1.05);
-    }
+    header img.logo:hover { transform: rotate(-10deg) scale(1.05); }
     header .header-text h1 {
       font-size: 2.8rem;
       margin: 0;
       font-weight: 700;
       letter-spacing: 1px;
-      color: #fff;
       animation: fadeInUp 1s ease forwards;
       opacity: 0;
     }
@@ -131,7 +86,7 @@
       gap: 25px;
       flex-wrap: wrap;
     }
-    nav a { color: #fff; font-weight: 500; font-size: 0.95rem; transition: color 0.3s ease; }
+    nav a { color: #fff; font-weight: 500; transition: color 0.3s ease; }
     nav a:hover { color: #ffeb3b; }
 
     /* SECTIONS */
@@ -140,13 +95,13 @@
     .intro p { max-width: 900px; margin: auto; margin-bottom: 15px; text-align: center; color: #eee; }
 
     /* BLOG GRID */
-    .blog-grid {
+    .blog-grid, .shop-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
       margin-top: 40px;
     }
-    .post {
+    .post, .product {
       border-radius: 15px;
       padding: 25px;
       background: rgba(255, 255, 255, 0.15);
@@ -156,19 +111,32 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       color: #fff;
+      text-align: center;
     }
-    .post:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
-    .post h3 { font-size: 1.2rem; margin-bottom: 10px; color: #ffeb3b; }
-    .post p { font-size: 0.95rem; color: #f1f1f1; }
+    .post:hover, .product:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
+    .post h3, .product h3 { font-size: 1.2rem; margin-bottom: 10px; color: #ffeb3b; }
+    .post p, .product p { font-size: 0.95rem; color: #f1f1f1; }
     .post a.read { display: inline-block; margin-top: 15px; color: #ffeb3b; font-weight: 500; }
+    .product img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
+    .product button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ffeb3b;
+      color: #222;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .product button:hover { background: #f7d600; }
 
     /* FOOTER */
     footer {
-      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
-      color: #bbb;
-      padding: 40px 20px;
       text-align: center;
+      padding: 40px 20px;
       font-size: 0.9rem;
+      color: #bbb;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
     }
     footer a { color: #bbb; margin: 0 10px; transition: color 0.3s ease; }
     footer a:hover { color: #ffeb3b; }
@@ -187,10 +155,8 @@
     <div class="header-container">
       <img src="favicon.png" alt="TopPickrPro Logo" class="logo">
       <div class="header-text">
-        <h1 class="animated-text">TopPickrPro</h1>
-        <p class="animated-text">
-          Learn legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills — without scams.
-        </p>
+        <h1>TopPickrPro</h1>
+        <p>Learn legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills — without scams.</p>
       </div>
     </div>
   </header>
@@ -198,7 +164,7 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="#blog">Blog</a>
-    <a href="shop.html">Shop</a>
+    <a href="#shop">Shop</a>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms.html">Terms</a>
     <a href="disclaimer.html">Disclaimer</a>
@@ -210,6 +176,7 @@
     <p>We focus on long-term skills, ethical methods, and realistic expectations — not get-rich-quick schemes.</p>
   </section>
 
+  <!-- BLOG SECTION -->
   <section id="blog">
     <h2>Latest Blog Articles</h2>
     <div class="blog-grid">
@@ -237,6 +204,37 @@
         <h3>Online Money Scams to Avoid</h3>
         <p>Learn how to identify common scams and protect yourself online.</p>
         <a class="read" href="online-money-scams-to-avoid.html">Read Article →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP SECTION -->
+  <section id="shop">
+    <h2>Shop Our Recommended Products</h2>
+    <div class="shop-grid">
+      <div class="product">
+        <img src="affiliate-product1.jpg" alt="Affiliate Product 1">
+        <h3>Freelancing E-book</h3>
+        <p>Price: $19.99</p>
+        <a href="https://affiliate-link1.com" target="_blank"><button>Buy Now</button></a>
+      </div>
+      <div class="product">
+        <img src="affiliate-product2.jpg" alt="Affiliate Product 2">
+        <h3>Affiliate Marketing Course</h3>
+        <p>Price: $29.99</p>
+        <a href="https://affiliate-link2.com" target="_blank"><button>Buy Now</button></a>
+      </div>
+      <div class="product">
+        <img src="affiliate-product3.jpg" alt="Affiliate Product 3">
+        <h3>Online Tools Toolkit</h3>
+        <p>Price: $49.99</p>
+        <a href="https://affiliate-link3.com" target="_blank"><button>Buy Now</button></a>
+      </div>
+      <div class="product">
+        <img src="affiliate-product4.jpg" alt="Affiliate Product 4">
+        <h3>Webinar: Master Online Skills</h3>
+        <p>Price: $9.99</p>
+        <a href="https://affiliate-link4.com" target="_blank"><button>Buy Now</button></a>
       </div>
     </div>
   </section>
