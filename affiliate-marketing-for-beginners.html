@@ -1,126 +1,241 @@
-<style>
-  /* BODY WITH FULL SCREEN ANIMATED GRADIENT */
-  body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    line-height: 1.7;
-    color: #fff;
-    background: linear-gradient(-45deg, #4b0082, #6a5acd, #7b68ee, #483d8b);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    position: relative;
-  }
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TopPickrPro | Learn Legit Ways to Earn Money Online</title>
+  <meta name="description" content="TopPickrPro teaches beginners legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills." />
+  <meta name="keywords" content="earn money online, affiliate marketing, freelancing, online income, work from home" />
 
-  a { text-decoration: none; color: inherit; }
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-  /* HEADER */
-  header {
-    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-    color: #fff;
-    padding: 40px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    overflow: hidden;
-  }
-  .header-container {
-    display: flex;
-    align-items: center;
-    max-width: 1100px;
-    margin: auto;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  header img.logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-  }
-  header img.logo:hover {
-    transform: rotate(-10deg) scale(1.05);
-  }
-  header .header-text h1 {
-    font-size: 2.8rem;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #FFD966; /* accent color */
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-  }
-  header .header-text p {
-    margin-top: 8px;
-    max-width: 600px;
-    font-size: 1rem;
-    opacity: 0.9;
-    line-height: 1.5;
-    animation: fadeInUp 1.3s ease forwards;
-    opacity: 0;
-  }
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  /* NAVIGATION */
-  nav {
-    background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.55));
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-  }
-  nav a { color: #fff; font-weight: 500; font-size: 0.95rem; transition: color 0.3s ease; }
-  nav a:hover { color: #FFD966; }
+  <style>
+    /* BODY WITH FULL SCREEN ANIMATED GRADIENT */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      line-height: 1.7;
+      color: #fff;
+      background: linear-gradient(-45deg, #4b0082, #6a5acd, #7b68ee, #483d8b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: relative;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  /* SECTIONS */
-  section { max-width: 1100px; margin: auto; padding: 70px 20px; }
-  h2 { text-align: center; font-size: 2rem; margin-bottom: 25px; color: #FFD966; }
-  .intro p { max-width: 900px; margin: auto; margin-bottom: 15px; text-align: center; color: #e0e0ff; }
+    a { text-decoration: none; color: inherit; }
 
-  /* BLOG GRID */
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-  }
-  .post {
-    border-radius: 15px;
-    padding: 25px;
-    background: rgba(30, 30, 60, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    color: #fff;
-  }
-  .post:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
-  .post h3 { font-size: 1.2rem; margin-bottom: 10px; color: #FFD966; }
-  .post p { font-size: 0.95rem; color: #f1f1f1; }
-  .post a.read { display: inline-block; margin-top: 15px; color: #FFD966; font-weight: 500; }
+    /* HEADER WITH ANIMATED GRADIENT */
+    header {
+      color: #fff;
+      padding: 40px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      background: linear-gradient(135deg, #4b0082, #6a5acd, #7b68ee, #483d8b);
+      background-size: 400% 400%;
+      animation: gradientBGHeader 15s ease infinite;
+    }
+    @keyframes gradientBGHeader {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  /* FOOTER */
-  footer {
-    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
-    color: #bbb;
-    padding: 40px 20px;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  footer a { color: #bbb; margin: 0 10px; transition: color 0.3s ease; }
-  footer a:hover { color: #FFD966; }
+    .header-container {
+      display: flex;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    header img.logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    header img.logo:hover {
+      transform: rotate(-10deg) scale(1.05);
+    }
+    header .header-text h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #FFD966; /* accent color */
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+    header .header-text p {
+      margin-top: 8px;
+      max-width: 600px;
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.5;
+      animation: fadeInUp 1.3s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .header-container { flex-direction: column; text-align: center; }
-    header .header-text h1 { font-size: 2.2rem; }
-    header .header-text p { font-size: 0.95rem; max-width: 100%; }
-  }
-</style>
+    /* NAVIGATION WITH MATCHING GRADIENT */
+    nav {
+      background: linear-gradient(to right, #4b0082, #6a5acd, #7b68ee, #483d8b);
+      background-size: 400% 400%;
+      animation: gradientBGNav 15s ease infinite;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    @keyframes gradientBGNav {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    nav a { color: #fff; font-weight: 500; font-size: 0.95rem; transition: color 0.3s ease; }
+    nav a:hover { color: #FFD966; }
+
+    /* SECTIONS */
+    section { max-width: 1100px; margin: auto; padding: 70px 20px; }
+    h2 { text-align: center; font-size: 2rem; margin-bottom: 25px; color: #FFD966; }
+    .intro p { max-width: 900px; margin: auto; margin-bottom: 15px; text-align: center; color: #e0e0ff; }
+
+    /* BLOG GRID */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    .post {
+      border-radius: 15px;
+      padding: 25px;
+      background: linear-gradient(-45deg, rgba(75,0,130,0.6), rgba(106,90,205,0.5), rgba(123,104,238,0.5), rgba(72,61,139,0.5));
+      background-size: 400% 400%;
+      animation: gradientPost 15s ease infinite;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #fff;
+    }
+    @keyframes gradientPost {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .post:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
+    .post h3 { font-size: 1.2rem; margin-bottom: 10px; color: #FFD966; }
+    .post p { font-size: 0.95rem; color: #f1f1f1; }
+    .post a.read { display: inline-block; margin-top: 15px; color: #FFD966; font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(to top, #4b0082, #6a5acd, #7b68ee, #483d8b);
+      background-size: 400% 400%;
+      animation: gradientBGFooter 15s ease infinite;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    @keyframes gradientBGFooter {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    footer a { color: #bbb; margin: 0 10px; transition: color 0.3s ease; }
+    footer a:hover { color: #FFD966; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header-container { flex-direction: column; text-align: center; }
+      header .header-text h1 { font-size: 2.2rem; }
+      header .header-text p { font-size: 0.95rem; max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <img src="favicon.png" alt="TopPickrPro Logo" class="logo">
+      <div class="header-text">
+        <h1 class="animated-text">TopPickrPro</h1>
+        <p class="animated-text">
+          Learn legitimate ways to earn money online through freelancing, affiliate marketing, and digital skills — without scams.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#blog">Blog</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="disclaimer.html">Disclaimer</a>
+  </nav>
+
+  <section class="intro">
+    <h2>Learn How to Earn Money Online the Right Way</h2>
+    <p>TopPickrPro is an educational platform created to help beginners understand legitimate ways to earn money online.</p>
+    <p>We focus on long-term skills, ethical methods, and realistic expectations — not get-rich-quick schemes.</p>
+  </section>
+
+  <section id="blog">
+    <h2>Latest Blog Articles</h2>
+    <div class="blog-grid">
+      <div class="post">
+        <h3>How Beginners Can Earn Money Online Legitimately</h3>
+        <p>A beginner-friendly guide explaining realistic and legal ways to earn money online.</p>
+        <a class="read" href="how-to-earn-money-online.html">Read Article →</a>
+      </div>
+      <div class="post">
+        <h3>Affiliate Marketing for Beginners</h3>
+        <p>Learn how affiliate marketing works and how beginners can start ethically.</p>
+        <a class="read" href="affiliate-marketing-for-beginners.html">Read Article →</a>
+      </div>
+      <div class="post">
+        <h3>Best Online Skills That Pay Well</h3>
+        <p>Discover digital skills that can help you earn money through remote work.</p>
+        <a class="read" href="best-online-skills-that-pay.html">Read Article →</a>
+      </div>
+      <div class="post">
+        <h3>How Freelancing Works</h3>
+        <p>A simple explanation of freelancing platforms and how beginners can start.</p>
+        <a class="read" href="how-freelancing-works.html">Read Article →</a>
+      </div>
+      <div class="post">
+        <h3>Online Money Scams to Avoid</h3>
+        <p>Learn how to identify common scams and protect yourself online.</p>
+        <a class="read" href="online-money-scams-to-avoid.html">Read Article →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 TopPickrPro. All rights reserved.</p>
+    <p>
+      <a href="privacy-policy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a> |
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+</body>
+</html>
