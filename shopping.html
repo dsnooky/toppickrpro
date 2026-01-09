@@ -14,6 +14,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    .product-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.badge {
+  display: inline-block;
+  background: #ff5722;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.category {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-bottom: 5px;
+}
+
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -140,6 +164,65 @@
 <footer>
   © 2026 TopPickrPro • Affiliate links may earn commissions
 </footer>
+
+  <script>
+const products = [
+  {
+    title: "Wireless Bluetooth Earbuds",
+    category: "Tech",
+    hot: true,
+    image: "https://images.unsplash.com/photo-1585386959984-a41552231693",
+    link: "https://s.shopee.ph/6VHGj0pM5t",
+    description: "Best-selling earbuds with high ratings."
+  },
+  {
+    title: "Fitness Resistance Bands",
+    category: "Health",
+    hot: false,
+    image: "https://images.unsplash.com/photo-1599058917212-d750089bc07b",
+    link: "https://s.shopee.ph/6fagvUj6oT",
+    description: "Perfect for home workouts and fitness beginners."
+  },
+  {
+    title: "Trendy Crossbody Bag",
+    category: "Fashion",
+    hot: true,
+    image: "https://images.unsplash.com/photo-1585386959984-9cc17b8d1b3a",
+    link: "https://s.shopee.ph/1VsalyQXxj",
+    description: "Stylish and affordable fashion accessory."
+  }
+];
+
+const grid = document.getElementById("productGrid");
+
+function displayProducts(list) {
+  grid.innerHTML = "";
+  list.forEach(p => {
+    grid.innerHTML += `
+      <div class="card">
+        ${p.hot ? '<div class="badge">🔥 Hot Deal</div>' : ''}
+        <img src="${p.image}" class="product-img" alt="${p.title}">
+        <div class="category">${p.category}</div>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+        <a class="btn" href="${p.link}" target="_blank">View Deal</a>
+      </div>
+    `;
+  });
+}
+
+function filterCategory(cat) {
+  if (cat === "All") {
+    displayProducts(products);
+  } else {
+    displayProducts(products.filter(p => p.category === cat));
+  }
+}
+
+// Load all products on page load
+displayProducts(products);
+</script>
+
 
 </body>
 </html>
