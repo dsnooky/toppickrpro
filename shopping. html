@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392667265249786"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Deals | TopPickrPro</title>
+
+  <meta name="description" content="Discover affiliate-friendly shopping deals and products you can promote to earn online legitimately.">
+  <meta name="keywords" content="shopping deals, affiliate products, shopee affiliate, lazada affiliate">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav {
+      background: rgba(0,0,0,0.75);
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    nav a:hover { color: #ffeb3b; }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 15px;
+      padding: 25px;
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #ffeb3b;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #ffeb3b;
+      color: #000;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      background: rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="shopping.html">Shopping</a>
+  <a href="privacy-policy.html">Privacy Policy</a>
+</nav>
+
+<section>
+  <h1>Shopping Deals & Affiliate Products</h1>
+  <p style="text-align:center;max-width:800px;margin:auto;">
+    These are curated shopping ideas and products suitable for affiliate marketing.
+    Always review products before promoting.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Shopee Best-Sellers</h3>
+      <p>Popular products with strong demand and repeat buyers.</p>
+      <a class="btn" href="#" target="_blank">View on Shopee</a>
+    </div>
+
+    <div class="card">
+      <h3>Lazada Trending Items</h3>
+      <p>High-converting items ideal for social media promotion.</p>
+      <a class="btn" href="#" target="_blank">View on Lazada</a>
+    </div>
+
+    <div class="card">
+      <h3>Digital Tools & Subscriptions</h3>
+      <p>Online services and tools that pay recurring commissions.</p>
+      <a class="btn" href="#" target="_blank">View Tools</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 TopPickrPro • Affiliate links may earn commissions
+</footer>
+
+</body>
+</html>
