@@ -4,22 +4,24 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392667265249786"
     crossorigin="anonymous"></script>
-  <!-- Google Analytics GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9C0Y6D9TPK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9C0Y6D9TPK');
-</script>
 
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9C0Y6D9TPK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9C0Y6D9TPK');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Deals | TopPickrPro</title>
 
-  <meta name="description" content="Affiliate shopping deals synced from Google Sheets with images, prices, and hot deals.">
-  <meta name="keywords" content="affiliate shopping, shopee affiliate, lazada affiliate, deals philippines">
+  <!-- AdSense-friendly SEO -->
+  <meta name="description" content="Browse verified affiliate shopping deals synced live from Google Sheets. Tech, Health, and Fashion products with real prices and hot deals.">
+  <meta name="keywords" content="affiliate shopping philippines, shopee affiliate, lazada affiliate, tech deals, fashion deals">
+  <meta name="robots" content="index, follow">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -40,7 +42,7 @@
     }
 
     nav {
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.85);
       padding: 15px;
       text-align: center;
     }
@@ -62,7 +64,7 @@
 
     h1 { text-align: center; }
 
-    .filter-bar, .search-bar {
+    .search-bar, .filter-bar {
       text-align: center;
       margin-top: 25px;
     }
@@ -82,7 +84,7 @@
     .search-bar input {
       padding: 12px 18px;
       width: 90%;
-      max-width: 400px;
+      max-width: 420px;
       border-radius: 25px;
       border: none;
       font-size: 1rem;
@@ -104,33 +106,31 @@
       position: relative;
     }
 
-   .product-img {
-  width: 100%;
-  aspect-ratio: 4 / 3;   /* keeps image proportion */
-  height: auto;
-  object-fit: contain;  /* NO crop on desktop */
-  background: #000;     /* clean background for contain */
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-
-/* MOBILE: allow crop for better card look */
-@media (max-width: 768px) {
-  .product-img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-  }
-}
-
+    /* Image auto-adjust */
+    .product-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #000;
+      border-radius: 12px;
+      margin-bottom: 12px;
     }
+
+    @media (max-width: 768px) {
+      .product-img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+    }
+
     @media (min-width: 769px) {
-  .card: hover .product-img {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-  }
-}
+      .card:hover .product-img {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+    }
 
-
+    /* Badges */
     .badge {
       position: absolute;
       top: 15px;
@@ -146,27 +146,44 @@
       position: absolute;
       top: 15px;
       right: 15px;
-      background: #000;
       padding: 6px 12px;
       border-radius: 20px;
       font-size: 0.7rem;
+      font-weight: 600;
+      color: #fff;
     }
 
-    .category {
-      font-size: 0.8rem;
-      opacity: 0.85;
-    }
+    .platform.shopee { background: #ee4d2d; }
+    .platform.lazada { background: #1a1aff; }
+    .platform.other { background: #444; }
+
+    .category { font-size: 0.8rem; opacity: 0.85; }
 
     .price {
       font-weight: 600;
-      color: #ffeb3b;
       margin: 6px 0;
     }
+
+    .price.up { color: #ff5252; }
+    .price.down { color: #4caf50; }
 
     .stats {
       font-size: 0.8rem;
       opacity: 0.85;
       margin-bottom: 12px;
+    }
+
+    /* Skeleton loader */
+    .skeleton {
+      height: 280px;
+      border-radius: 15px;
+      background: linear-gradient(90deg,#ffffff10,#ffffff30,#ffffff10);
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: 200px 0; }
     }
 
     footer {
@@ -190,11 +207,11 @@
 <section>
   <h1>Shopping Deals & Affiliate Picks</h1>
   <p style="text-align:center;max-width:800px;margin:auto;">
-    Products are synced live from Google Sheets. Prices and images are auto-formatted.
+    Verified products synced live from Google Sheets. Prices and deals update automatically.
   </p>
 
   <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+    <input id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
   </div>
 
   <div class="filter-bar">
@@ -204,7 +221,11 @@
     <button class="btn" onclick="filterCategory('Fashion')">Fashion</button>
   </div>
 
-  <div class="grid" id="productGrid"></div>
+  <div class="grid" id="productGrid">
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+  </div>
 </section>
 
 <footer>
@@ -212,20 +233,18 @@
 </footer>
 
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT7acMpvj4hOe53DgKT4bcxhuplyMlXX9VtFI7XuMxSNIe07EMRK1rqNJFBqPhewm8tSLb5W6yIXsgT/pub?gid=0&single=true&output=csv";
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT7acMpvj4hOe53DgKT4bcxhuplyMlXX9VtFI7XuMxSNIe07EMRK1rqNJFBqPhewm8tSLb5W6yIXsgT/pub?output=csv";
 const grid = document.getElementById("productGrid");
 let allProducts = [];
+let previousPrices = JSON.parse(localStorage.getItem("prices") || "{}");
 
-/* Helpers */
-function formatPrice(val) {
-  const num = parseFloat(val.replace(/[^\d.]/g, ""));
-  return isNaN(num)
-    ? val
-    : "₱" + num.toLocaleString("en-PH", { minimumFractionDigits: 2 });
+function parseCSV(row) {
+  return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)
+    .map(c => c.replace(/^"|"$/g, ""));
 }
 
 function formatImage(url) {
-  if (!url) return "https://via.placeholder.com/400x300?text=No+Image";
+  if (!url) return "https://via.placeholder.com/400x300";
   if (url.includes("drive.google.com")) {
     const id = url.match(/[-\w]{25,}/);
     return id ? `https://drive.google.com/uc?id=${id[0]}` : url;
@@ -233,85 +252,65 @@ function formatImage(url) {
   return url;
 }
 
-/* Fetch Google Sheets */
 fetch(SHEET_URL)
-  .then(res => res.text())
+  .then(r => r.text())
   .then(csv => {
-    const rows = csv.split("\n").slice(1);
+    const rows = csv.trim().split("\n").slice(1);
+    grid.innerHTML = "";
+
     allProducts = rows.map(r => {
-      const [title, category, price, rating, sold, hot, platform, image, link] = r.split(",");
+      const [title, category, price, rating, sold, hot, platform, image, link] = parseCSV(r);
+      const numPrice = parseFloat(price.replace(/[^\d.]/g,""));
+      const old = previousPrices[title];
+      previousPrices[title] = numPrice;
+
       return {
-        title,
-        category,
-        price: formatPrice(price),
-        rating,
-        sold,
-        hot: hot === "TRUE",
+        title, category, rating, sold, hot: hot==="TRUE", link,
+        price: numPrice,
+        trend: old ? (numPrice > old ? "up" : numPrice < old ? "down" : "") : "",
         platform,
-        image: formatImage(image),
-        link
+        platformClass: platform?.toLowerCase().includes("shopee") ? "shopee" :
+                       platform?.toLowerCase().includes("lazada") ? "lazada" : "other",
+        image: formatImage(image)
       };
     });
+
+    localStorage.setItem("prices", JSON.stringify(previousPrices));
     displayProducts(allProducts);
   });
 
 function displayProducts(list) {
   grid.innerHTML = "";
-  if (!list.length) {
-    grid.innerHTML = "<p style='grid-column:1/-1;text-align:center;'>No products found</p>";
-    return;
-  }
-
   list.forEach(p => {
     grid.innerHTML += `
       <div class="card">
-        ${p.hot ? '<div class="badge">🔥 Hot Deal</div>' : ''}
-        <div class="platform">${p.platform}</div>
-        <img loading="lazy" src="${p.image}" class="product-img" alt="${p.title}">
+        ${p.hot ? `<div class="badge">🔥 Hot Deal</div>` : ""}
+        <div class="platform ${p.platformClass}">${p.platform}</div>
+        <img class="product-img" src="${p.image}">
         <div class="category">${p.category}</div>
         <h3>${p.title}</h3>
-        <div class="price">${p.price}</div>
+        <div class="price ${p.trend}">₱${p.price.toLocaleString()}</div>
         <div class="stats">⭐ ${p.rating} • ${p.sold}</div>
-        <a class="btn"
-   href="${p.link}"
-   target="_blank"
-   onclick="trackClick('${p.title}','${p.category}','${p.platform}','${p.price}','${p.hot}')">
-   View Deal
-</a>
-
+        <a class="btn" href="${p.link}" target="_blank"
+          onclick="gtag('event','affiliate_click',{event_label:'${p.title}'})">
+          View Deal
+        </a>
       </div>
     `;
   });
 }
 
-function filterCategory(cat) {
-  if (cat === "All") displayProducts(allProducts);
-  else displayProducts(allProducts.filter(p => p.category === cat));
+function filterCategory(c) {
+  displayProducts(c==="All" ? allProducts : allProducts.filter(p => p.category===c));
 }
 
 function searchProducts() {
-  const q = document.getElementById("searchInput").value.toLowerCase();
-  displayProducts(
-    allProducts.filter(p =>
-      p.title.toLowerCase().includes(q) ||
-      p.category.toLowerCase().includes(q) ||
-      p.platform.toLowerCase().includes(q)
-    )
-  );
+  const q = searchInput.value.toLowerCase();
+  displayProducts(allProducts.filter(p =>
+    p.title.toLowerCase().includes(q) ||
+    p.category.toLowerCase().includes(q)
+  ));
 }
-  <script>
-function trackClick(title, category, platform, price, hot) {
-  gtag('event', 'affiliate_click', {
-    event_category: 'Affiliate',
-    event_label: title,
-    product_category: category,
-    platform: platform,
-    price: price,
-    hot_deal: hot
-  });
-}
-</script>
-
 </script>
 
 </body>
