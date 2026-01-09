@@ -95,12 +95,24 @@
       position: relative;
     }
 
-    .product-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 12px;
+   .product-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* keeps image proportion */
+  height: auto;
+  object-fit: contain;  /* NO crop on desktop */
+  background: #000;     /* clean background for contain */
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* MOBILE: allow crop for better card look */
+@media (max-width: 768px) {
+  .product-img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
     }
 
     .badge {
