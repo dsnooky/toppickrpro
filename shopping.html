@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392667265249786"
      crossorigin="anonymous"></script>
 
@@ -8,36 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Deals | TopPickrPro</title>
 
-  <meta name="description" content="Discover affiliate-friendly shopping deals and products you can promote to earn online legitimately.">
-  <meta name="keywords" content="shopping deals, affiliate products, shopee affiliate, lazada affiliate">
+  <meta name="description" content="Curated affiliate products with prices, ratings, and hot deals.">
+  <meta name="keywords" content="affiliate shopping, shopee affiliate, lazada affiliate, online deals">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    .product-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-.badge {
-  display: inline-block;
-  background: #ff5722;
-  color: #fff;
-  font-size: 0.75rem;
-  padding: 5px 10px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-
-.category {
-  font-size: 0.8rem;
-  opacity: 0.85;
-  margin-bottom: 5px;
-}
-
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -69,42 +46,81 @@
     nav a:hover { color: #ffeb3b; }
 
     section {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
       padding: 70px 20px;
     }
 
-    h1, h2 {
+    h1 { text-align: center; }
+
+    .filter-bar {
       text-align: center;
-      margin-bottom: 20px;
+      margin-top: 30px;
     }
 
-  <div class="filter-bar" style="text-align:center;margin-top:30px;">
-  <button class="btn" onclick="filterCategory('All')">All</button>
-  <button class="btn" onclick="filterCategory('Tech')">Tech</button>
-  <button class="btn" onclick="filterCategory('Health')">Health</button>
-  <button class="btn" onclick="filterCategory('Fashion')">Fashion</button>
-</div>
+    .filter-bar .btn { margin: 5px; }
 
-<div class="grid" id="productGrid"></div>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
 
     .card {
       background: rgba(255,255,255,0.15);
       border-radius: 15px;
-      padding: 25px;
+      padding: 20px;
       backdrop-filter: blur(12px);
       text-align: center;
+      position: relative;
     }
 
-    .card h3 {
+    .product-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #ff5722;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .platform {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #000;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+    }
+
+    .category {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: 600;
       color: #ffeb3b;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 15px;
+    .stats {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-bottom: 12px;
     }
 
     .btn {
@@ -120,7 +136,7 @@
     footer {
       text-align: center;
       padding: 40px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       opacity: 0.8;
       background: rgba(0,0,0,0.6);
     }
@@ -136,60 +152,60 @@
 </nav>
 
 <section>
-  <h1>Shopping Deals & Affiliate Products</h1>
+  <h1>Shopping Deals & Affiliate Picks</h1>
   <p style="text-align:center;max-width:800px;margin:auto;">
-    These are curated shopping ideas and products suitable for affiliate marketing.
-    Always review products before promoting.
+    Updated affiliate-friendly products with strong conversion potential.
   </p>
 
-  <div class="grid">
-
-    <div class="card">
-      <h3>Shopee Best-Sellers</h3>
-      <p>Popular products with strong demand and repeat buyers.</p>
-      <a class="btn" href="https://s.shopee.ph/5q1mOluUem" target="_blank">View on Shopee</a>
-    </div>
-
-    <div class="card">
-      <h3>Lazada Trending Items</h3>
-      <p>High-converting items ideal for social media promotion.</p>
-      <a class="btn" href="https://c.lazada.com.ph/t/c.Xng1HY" target="_blank">View on Lazada</a>
-    </div>
-
-  
-
+  <div class="filter-bar">
+    <button class="btn" onclick="filterCategory('All')">All</button>
+    <button class="btn" onclick="filterCategory('Tech')">Tech</button>
+    <button class="btn" onclick="filterCategory('Health')">Health</button>
+    <button class="btn" onclick="filterCategory('Fashion')">Fashion</button>
   </div>
+
+  <div class="grid" id="productGrid"></div>
 </section>
 
 <footer>
   © 2026 TopPickrPro • Affiliate links may earn commissions
 </footer>
 
-  <script>
+<script>
+/* JSON DATA – Google Sheets ready */
 const products = [
   {
     title: "Wireless Bluetooth Earbuds",
     category: "Tech",
+    price: "₱299",
+    rating: 4.8,
+    sold: "12k sold",
     hot: true,
+    platform: "Shopee",
     image: "https://images.unsplash.com/photo-1585386959984-a41552231693",
-    link: "https://s.shopee.ph/6VHGj0pM5t",
-    description: "Best-selling earbuds with high ratings."
+    link: "https://s.shopee.ph/6VHGj0pM5t"
   },
   {
     title: "Fitness Resistance Bands",
     category: "Health",
+    price: "₱199",
+    rating: 4.7,
+    sold: "8k sold",
     hot: false,
+    platform: "Shopee",
     image: "https://images.unsplash.com/photo-1599058917212-d750089bc07b",
-    link: "https://s.shopee.ph/6fagvUj6oT",
-    description: "Perfect for home workouts and fitness beginners."
+    link: "https://s.shopee.ph/6fagvUj6oT"
   },
   {
-    title: "Trendy Crossbody Bag",
+    title: "Stylish Crossbody Bag",
     category: "Fashion",
+    price: "₱349",
+    rating: 4.9,
+    sold: "15k sold",
     hot: true,
+    platform: "Lazada",
     image: "https://images.unsplash.com/photo-1585386959984-9cc17b8d1b3a",
-    link: "https://s.shopee.ph/1VsalyQXxj",
-    description: "Stylish and affordable fashion accessory."
+    link: "https://s.shopee.ph/1VsalyQXxj"
   }
 ];
 
@@ -201,10 +217,12 @@ function displayProducts(list) {
     grid.innerHTML += `
       <div class="card">
         ${p.hot ? '<div class="badge">🔥 Hot Deal</div>' : ''}
-        <img src="${p.image}" class="product-img" alt="${p.title}">
+        <div class="platform">${p.platform}</div>
+        <img loading="lazy" src="${p.image}" class="product-img" alt="${p.title}">
         <div class="category">${p.category}</div>
         <h3>${p.title}</h3>
-        <p>${p.description}</p>
+        <div class="price">${p.price}</div>
+        <div class="stats">⭐ ${p.rating} • ${p.sold}</div>
         <a class="btn" href="${p.link}" target="_blank">View Deal</a>
       </div>
     `;
@@ -219,10 +237,8 @@ function filterCategory(cat) {
   }
 }
 
-// Load all products on page load
 displayProducts(products);
 </script>
-
 
 </body>
 </html>
