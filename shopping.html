@@ -4,6 +4,15 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392667265249786"
     crossorigin="anonymous"></script>
+  <!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -263,7 +272,13 @@ function displayProducts(list) {
         <h3>${p.title}</h3>
         <div class="price">${p.price}</div>
         <div class="stats">⭐ ${p.rating} • ${p.sold}</div>
-        <a class="btn" href="${p.link}" target="_blank">View Deal</a>
+        <a class="btn"
+   href="${p.link}"
+   target="_blank"
+   onclick="trackClick('${p.title}','${p.category}','${p.platform}','${p.price}','${p.hot}')">
+   View Deal
+</a>
+
       </div>
     `;
   });
@@ -284,6 +299,19 @@ function searchProducts() {
     )
   );
 }
+  <script>
+function trackClick(title, category, platform, price, hot) {
+  gtag('event', 'affiliate_click', {
+    event_category: 'Affiliate',
+    event_label: title,
+    product_category: category,
+    platform: platform,
+    price: price,
+    hot_deal: hot
+  });
+}
+</script>
+
 </script>
 
 </body>
