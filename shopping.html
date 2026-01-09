@@ -3,14 +3,14 @@
 <head>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392667265249786"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Deals | TopPickrPro</title>
 
-  <meta name="description" content="Curated affiliate products with prices, ratings, and hot deals.">
-  <meta name="keywords" content="affiliate shopping, shopee affiliate, lazada affiliate, online deals">
+  <meta name="description" content="Affiliate shopping deals synced from Google Sheets with images, prices, and hot deals.">
+  <meta name="keywords" content="affiliate shopping, shopee affiliate, lazada affiliate, deals philippines">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -18,10 +18,10 @@
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
+      color: #fff;
       background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
-      color: #fff;
     }
 
     @keyframes gradientBG {
@@ -39,8 +39,8 @@
     nav a {
       margin: 0 15px;
       color: #fff;
-      font-weight: 500;
       text-decoration: none;
+      font-weight: 500;
     }
 
     nav a:hover { color: #ffeb3b; }
@@ -53,12 +53,31 @@
 
     h1 { text-align: center; }
 
-    .filter-bar {
+    .filter-bar, .search-bar {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 25px;
     }
 
-    .filter-bar .btn { margin: 5px; }
+    .btn {
+      padding: 10px 20px;
+      background: #ffeb3b;
+      color: #000;
+      border-radius: 25px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 5px;
+      text-decoration: none;
+    }
+
+    .search-bar input {
+      padding: 12px 18px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 25px;
+      border: none;
+      font-size: 1rem;
+    }
 
     .grid {
       display: grid;
@@ -100,7 +119,7 @@
       top: 15px;
       right: 15px;
       background: #000;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 20px;
       font-size: 0.7rem;
     }
@@ -108,29 +127,18 @@
     .category {
       font-size: 0.8rem;
       opacity: 0.85;
-      margin-bottom: 5px;
     }
 
     .price {
       font-weight: 600;
       color: #ffeb3b;
-      margin-bottom: 5px;
+      margin: 6px 0;
     }
 
     .stats {
       font-size: 0.8rem;
       opacity: 0.85;
       margin-bottom: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #ffeb3b;
-      color: #000;
-      border-radius: 25px;
-      font-weight: 600;
-      text-decoration: none;
     }
 
     footer {
@@ -154,8 +162,12 @@
 <section>
   <h1>Shopping Deals & Affiliate Picks</h1>
   <p style="text-align:center;max-width:800px;margin:auto;">
-    Updated affiliate-friendly products with strong conversion potential.
+    Products are synced live from Google Sheets. Prices and images are auto-formatted.
   </p>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+  </div>
 
   <div class="filter-bar">
     <button class="btn" onclick="filterCategory('All')">All</button>
@@ -173,38 +185,55 @@
 
 <script>
 const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT7acMpvj4hOe53DgKT4bcxhuplyMlXX9VtFI7XuMxSNIe07EMRK1rqNJFBqPhewm8tSLb5W6yIXsgT/pub?gid=0&single=true&output=csv";
-
 const grid = document.getElementById("productGrid");
+let allProducts = [];
 
+/* Helpers */
+function formatPrice(val) {
+  const num = parseFloat(val.replace(/[^\d.]/g, ""));
+  return isNaN(num)
+    ? val
+    : "₱" + num.toLocaleString("en-PH", { minimumFractionDigits: 2 });
+}
+
+function formatImage(url) {
+  if (!url) return "https://via.placeholder.com/400x300?text=No+Image";
+  if (url.includes("drive.google.com")) {
+    const id = url.match(/[-\w]{25,}/);
+    return id ? `https://drive.google.com/uc?id=${id[0]}` : url;
+  }
+  return url;
+}
+
+/* Fetch Google Sheets */
 fetch(SHEET_URL)
   .then(res => res.text())
   .then(csv => {
     const rows = csv.split("\n").slice(1);
-    const products = rows.map(r => {
-      const [
-        title, category, price, rating, sold,
-        hot, platform, image, link
-      ] = r.split(",");
-
+    allProducts = rows.map(r => {
+      const [title, category, price, rating, sold, hot, platform, image, link] = r.split(",");
       return {
         title,
         category,
-        price,
+        price: formatPrice(price),
         rating,
         sold,
         hot: hot === "TRUE",
         platform,
-        image,
+        image: formatImage(image),
         link
       };
     });
-
-    window.allProducts = products;
-    displayProducts(products);
+    displayProducts(allProducts);
   });
 
 function displayProducts(list) {
   grid.innerHTML = "";
+  if (!list.length) {
+    grid.innerHTML = "<p style='grid-column:1/-1;text-align:center;'>No products found</p>";
+    return;
+  }
+
   list.forEach(p => {
     grid.innerHTML += `
       <div class="card">
@@ -222,13 +251,19 @@ function displayProducts(list) {
 }
 
 function filterCategory(cat) {
-  if (cat === "All") {
-    displayProducts(window.allProducts);
-  } else {
-    displayProducts(
-      window.allProducts.filter(p => p.category === cat)
-    );
-  }
+  if (cat === "All") displayProducts(allProducts);
+  else displayProducts(allProducts.filter(p => p.category === cat));
+}
+
+function searchProducts() {
+  const q = document.getElementById("searchInput").value.toLowerCase();
+  displayProducts(
+    allProducts.filter(p =>
+      p.title.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q) ||
+      p.platform.toLowerCase().includes(q)
+    )
+  );
 }
 </script>
 
