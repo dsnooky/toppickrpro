@@ -55,11 +55,14 @@
       margin-bottom: 20px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
+  <div class="filter-bar" style="text-align:center;margin-top:30px;">
+  <button class="btn" onclick="filterCategory('All')">All</button>
+  <button class="btn" onclick="filterCategory('Tech')">Tech</button>
+  <button class="btn" onclick="filterCategory('Health')">Health</button>
+  <button class="btn" onclick="filterCategory('Fashion')">Fashion</button>
+</div>
+
+<div class="grid" id="productGrid"></div>
     }
 
     .card {
