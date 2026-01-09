@@ -172,44 +172,36 @@
 </footer>
 
 <script>
-/* JSON DATA – Google Sheets ready */
-const products = [
-  {
-    title: "Wireless Bluetooth Earbuds",
-    category: "Tech",
-    price: "₱299",
-    rating: 4.8,
-    sold: "12k sold",
-    hot: true,
-    platform: "Shopee",
-    image: "https://images.unsplash.com/photo-1585386959984-a41552231693",
-    link: "https://s.shopee.ph/6VHGj0pM5t"
-  },
-  {
-    title: "Fitness Resistance Bands",
-    category: "Health",
-    price: "₱199",
-    rating: 4.7,
-    sold: "8k sold",
-    hot: false,
-    platform: "Shopee",
-    image: "https://images.unsplash.com/photo-1599058917212-d750089bc07b",
-    link: "https://s.shopee.ph/6fagvUj6oT"
-  },
-  {
-    title: "Stylish Crossbody Bag",
-    category: "Fashion",
-    price: "₱349",
-    rating: 4.9,
-    sold: "15k sold",
-    hot: true,
-    platform: "Lazada",
-    image: "https://images.unsplash.com/photo-1585386959984-9cc17b8d1b3a",
-    link: "https://s.shopee.ph/1VsalyQXxj"
-  }
-];
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv";
 
 const grid = document.getElementById("productGrid");
+
+fetch(SHEET_URL)
+  .then(res => res.text())
+  .then(csv => {
+    const rows = csv.split("\n").slice(1);
+    const products = rows.map(r => {
+      const [
+        title, category, price, rating, sold,
+        hot, platform, image, link
+      ] = r.split(",");
+
+      return {
+        title,
+        category,
+        price,
+        rating,
+        sold,
+        hot: hot === "TRUE",
+        platform,
+        image,
+        link
+      };
+    });
+
+    window.allProducts = products;
+    displayProducts(products);
+  });
 
 function displayProducts(list) {
   grid.innerHTML = "";
@@ -231,13 +223,13 @@ function displayProducts(list) {
 
 function filterCategory(cat) {
   if (cat === "All") {
-    displayProducts(products);
+    displayProducts(window.allProducts);
   } else {
-    displayProducts(products.filter(p => p.category === cat));
+    displayProducts(
+      window.allProducts.filter(p => p.category === cat)
+    );
   }
 }
-
-displayProducts(products);
 </script>
 
 </body>
