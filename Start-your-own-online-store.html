@@ -7,70 +7,77 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      background: #FFFFFF; /* Clean light background */
-      color: #1A1A1A;
-      line-height: 1.6;
-    }
+    body { background: #FFFFFF; color: #1A1A1A; line-height: 1.6; }
     .container {
       max-width: 800px;
-      margin: 30px auto;
-      padding: 25px;
+      margin: 40px auto;
+      padding: 30px;
       background: #F9F9F9;
       border-radius: 12px;
       border: 1px solid #E0E0E0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       text-align: center;
     }
-    h1 {
-      font-size: 30px;
-      margin-bottom: 20px;
-      color: #0D47A1; /* Strong, professional blue accent */
-    }
-    h2 {
-      font-size: 22px;
-      margin: 20px 0 10px;
-      color: #0D47A1;
-    }
+    h1 { font-size: 32px; margin-bottom: 20px; color: #0D47A1; }
+    h2 { font-size: 22px; margin: 20px 0 10px; color: #0D47A1; }
     p { margin-bottom: 15px; font-size: 16px; }
     ul { text-align: left; margin: 15px 0; padding-left: 20px; }
     ul li { margin-bottom: 10px; }
     .cta-btn {
       display: inline-block;
       margin: 25px 0;
-      padding: 15px 30px;
-      background: #0D47A1; /* CTA button uses main accent */
+      padding: 15px 35px;
+      background: #0D47A1;
       color: #FFFFFF;
       text-decoration: none;
       font-weight: 700;
       border-radius: 8px;
       transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
     }
-    .cta-btn:hover {
-      background: #08306A;
-      transform: scale(1.03);
-    }
+    .cta-btn:hover { background: #08306A; transform: scale(1.03); }
     .highlight { color: #0D47A1; font-weight: 600; }
-    .fake-comments { margin-top: 30px; text-align: left; }
-    .comment {
-      background: #FFFFFF;
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #DADADA;
-      margin-bottom: 12px;
-    }
-    .comment strong { color: #0D47A1; }
     .urgency {
-      background: #FFF3E0; 
+      background: #FFF3E0;
       padding: 12px;
       border-radius: 8px;
       color: #E65100;
       font-weight: 600;
       margin: 20px 0;
     }
-    .slots-counter {
-      font-weight: 700;
-      font-size: 18px;
-      color: #D84315;
+    .slots-counter { font-weight: 700; font-size: 18px; color: #D84315; }
+    
+    /* Scrollable fake comments */
+    .fake-comments {
+      margin-top: 30px;
+      text-align: left;
+      max-height: 300px; /* Fixed height for scroll */
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+    .comment {
+      background: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #DADADA;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      position: relative;
+    }
+    .comment strong { color: #0D47A1; }
+    .timestamp {
+      font-size: 12px;
+      color: #888888;
+      position: absolute;
+      right: 15px;
+      bottom: 10px;
+    }
+
+    @media (max-width: 768px) { 
+      .container { margin: 20px 15px; padding: 20px; } 
+      h1 { font-size: 26px; } 
+      h2 { font-size: 18px; } 
+      .cta-btn { padding: 12px 25px; }
     }
   </style>
 </head>
@@ -105,10 +112,26 @@
 
     <div class="fake-comments">
       <h2>What others are saying:</h2>
-      <div class="comment"><strong>Anna P.:</strong> Super dali i-update ang products — from Google Sheets direct!</div>
-      <div class="comment"><strong>Mark R.:</strong> Sales doubled within a week after launching my site!</div>
-      <div class="comment"><strong>Jessa L.:</strong> Professional website kahit hindi ako techie — love it!</div>
-      <div class="comment"><strong>Ken T.:</strong> Mobile friendly and easy to navigate — customers love it!</div>
+      <div class="comment">
+        <strong>Anna P.:</strong> Super dali i-update ang products — from Google Sheets direct!
+        <span class="timestamp">2 hours ago</span>
+      </div>
+      <div class="comment">
+        <strong>Mark R.:</strong> Sales doubled within a week after launching my site!
+        <span class="timestamp">3 hours ago</span>
+      </div>
+      <div class="comment">
+        <strong>Jessa L.:</strong> Professional website kahit hindi ako techie — love it!
+        <span class="timestamp">5 hours ago</span>
+      </div>
+      <div class="comment">
+        <strong>Ken T.:</strong> Mobile friendly and easy to navigate — customers love it!
+        <span class="timestamp">7 hours ago</span>
+      </div>
+      <div class="comment">
+        <strong>Liza M.:</strong> My customers are impressed with how professional the site looks.
+        <span class="timestamp">10 hours ago</span>
+      </div>
     </div>
   </div>
 
@@ -117,20 +140,16 @@
     const counter = document.getElementById('slotsCounter');
 
     function decreaseSlots() {
-      if (slots > 3) {
-        slots--;
-        counter.textContent = slots;
-      }
+      if (slots > 3) { slots--; counter.textContent = slots; }
     }
 
     setInterval(decreaseSlots, 5000);
 
-    const CTA_URL = "https://wa.me/your-number";
+    const CTA_URL = "https://wa.me/your-number"; // replace with your WhatsApp link
     document.getElementById('ctaButton').addEventListener('click', () => {
       decreaseSlots();
-      setTimeout(() => {
-        window.location.href = CTA_URL;
-      }, 200);
+      console.log('Click tracked');
+      setTimeout(() => { window.location.href = CTA_URL; }, 200);
     });
   </script>
 </body>
