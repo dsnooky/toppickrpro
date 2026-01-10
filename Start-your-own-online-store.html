@@ -7,7 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #FFFFFF; color: #1A1A1A; line-height: 1.6; }
+
+    /* Gradient Background */
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #ffffff); /* soft blue to white gradient */
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+
     .container {
       max-width: 800px;
       margin: 40px auto;
@@ -15,14 +22,16 @@
       background: #F9F9F9;
       border-radius: 12px;
       border: 1px solid #E0E0E0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       text-align: center;
     }
+
     h1 { font-size: 32px; margin-bottom: 20px; color: #0D47A1; }
     h2 { font-size: 22px; margin: 20px 0 10px; color: #0D47A1; }
     p { margin-bottom: 15px; font-size: 16px; }
     ul { text-align: left; margin: 15px 0; padding-left: 20px; }
     ul li { margin-bottom: 10px; }
+    
     .cta-btn {
       display: inline-block;
       margin: 25px 0;
@@ -36,6 +45,7 @@
       cursor: pointer;
     }
     .cta-btn:hover { background: #08306A; transform: scale(1.03); }
+
     .highlight { color: #0D47A1; font-weight: 600; }
     .urgency {
       background: #FFF3E0;
@@ -46,12 +56,12 @@
       margin: 20px 0;
     }
     .slots-counter { font-weight: 700; font-size: 18px; color: #D84315; }
-    
+
     /* Scrollable fake comments */
     .fake-comments {
       margin-top: 30px;
       text-align: left;
-      max-height: 300px; /* Fixed height for scroll */
+      max-height: 300px;
       overflow-y: auto;
       padding-right: 5px;
     }
@@ -138,14 +148,10 @@
   <script>
     let slots = 20;
     const counter = document.getElementById('slotsCounter');
-
-    function decreaseSlots() {
-      if (slots > 3) { slots--; counter.textContent = slots; }
-    }
-
+    function decreaseSlots() { if (slots > 3) { slots--; counter.textContent = slots; } }
     setInterval(decreaseSlots, 5000);
 
-    const CTA_URL = "https://wa.me/09083131655"; // replace with your WhatsApp link
+    const CTA_URL = "https://wa.me/your-number"; // Replace with your WhatsApp link
     document.getElementById('ctaButton').addEventListener('click', () => {
       decreaseSlots();
       console.log('Click tracked');
