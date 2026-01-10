@@ -16,39 +16,17 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✅ SEO TITLE -->
-  <title>Best Shopping Deals in the Philippines | Tech, Health & Fashion – TopPickrPro</title>
-
-  <!-- ✅ META DESCRIPTION -->
-  <meta name="description" content="Discover verified shopping deals in the Philippines. Tech, health, and fashion affiliate products with real-time price updates from Shopee and Lazada.">
-
-  <!-- ✅ SEO BASICS -->
+  
+  <!-- SEO Meta -->
+  <title>Shopping Deals & Affiliate Picks | TopPickrPro</title>
+  <meta name="description" content="Discover verified affiliate shopping deals in Tech, Health, and Fashion. Prices update automatically. Save money with TopPickrPro!">
+  <meta name="keywords" content="affiliate shopping philippines, shopee affiliate, lazada affiliate, tech deals, fashion deals, health deals">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://toppickrpro.com/shopping.html">
 
-  <!-- ✅ OPEN GRAPH -->
-  <meta property="og:title" content="Best Shopping Deals Philippines | TopPickrPro">
-  <meta property="og:description" content="Browse live-updated affiliate shopping deals from Shopee and Lazada. Tech, health & fashion picks you can trust.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toppickrpro.com/shopping.html">
-
-  <!-- GOOGLE FONT -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ STRUCTURED DATA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Shopping Deals & Affiliate Picks",
-    "url": "https://toppickrpro.com/shopping.html",
-    "description": "Live updated affiliate shopping deals in the Philippines for tech, health, and fashion products."
-  }
-  </script>
-
   <style>
-    /* DESIGN UNCHANGED */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -79,7 +57,9 @@
       margin: auto;
       padding: 70px 20px;
     }
-    h1 { text-align: center; }
+    h1 {
+      text-align: center;
+    }
     .search-bar, .filter-bar {
       text-align: center;
       margin-top: 25px;
@@ -125,6 +105,63 @@
       border-radius: 12px;
       margin-bottom: 12px;
     }
+    @media (max-width: 768px) {
+      .product-img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+    }
+    @media (min-width: 769px) {
+      .card:hover .product-img {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+    }
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #ff5722;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .platform {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .platform.shopee { background: #ee4d2d; }
+    .platform.lazada { background: #1a1aff; }
+    .platform.other { background: #444; }
+    .category { font-size: 0.8rem; opacity: 0.85; }
+    .price {
+      font-weight: 600;
+      margin: 6px 0;
+    }
+    .price.up { color: #ff5252; }
+    .price.down { color: #4caf50; }
+    .stats {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .skeleton {
+      height: 280px;
+      border-radius: 15px;
+      background: linear-gradient(90deg,#ffffff10,#ffffff30,#ffffff10);
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: 200px 0; }
+    }
     footer {
       text-align: center;
       padding: 40px;
@@ -132,9 +169,30 @@
       opacity: 0.8;
       background: rgba(0,0,0,0.6);
     }
-    /* SEO FAQ hidden */
-    .seo-faq { display:none; }
+    /* FAQ Section */
+    .faq-section {
+      max-width: 900px;
+      margin: 60px auto;
+      background: rgba(0,0,0,0.3);
+      padding: 25px 20px;
+      border-radius: 15px;
+    }
+    .faq-section h2 { text-align: center; margin-bottom: 20px; }
+    .faq-item { margin-bottom: 15px; }
+    .faq-item summary { cursor: pointer; font-weight: 600; font-size: 1rem; }
+    .faq-item p { margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; }
   </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "TopPickrPro Shopping Deals",
+    "description": "Verified affiliate shopping deals across Tech, Health, and Fashion.",
+    "itemListElement": []
+  }
+  </script>
 </head>
 
 <body>
@@ -146,13 +204,9 @@
 </nav>
 
 <section>
-  <!-- ✅ H1 -->
   <h1>Shopping Deals & Affiliate Picks</h1>
-
-  <!-- ✅ SEO INTRO -->
   <p style="text-align:center;max-width:800px;margin:auto;">
-    Browse verified shopping deals in the Philippines featuring tech, health, and fashion products.
-    All prices are updated live from trusted affiliate platforms like Shopee and Lazada.
+    Verified products synced live from Google Sheets. Prices and deals update automatically.
   </p>
 
   <div class="search-bar">
@@ -173,13 +227,22 @@
   </div>
 </section>
 
-<!-- ✅ SEO FAQ (INVISIBLE BUT INDEXABLE) -->
-<div class="seo-faq">
+<!-- FAQ Section -->
+<section class="faq-section">
   <h2>Frequently Asked Questions</h2>
-  <p><strong>Are these shopping deals legit?</strong> Yes, all products are sourced from official affiliate platforms.</p>
-  <p><strong>How often are prices updated?</strong> Prices update automatically from Google Sheets.</p>
-  <p><strong>Do you earn commissions?</strong> Yes, affiliate links may earn a commission at no extra cost.</p>
-</div>
+  <details class="faq-item">
+    <summary>What types of deals are offered?</summary>
+    <p>We offer verified affiliate deals across Tech, Health, and Fashion products.</p>
+  </details>
+  <details class="faq-item">
+    <summary>How often are prices updated?</summary>
+    <p>Prices and availability are synced live from Google Sheets daily.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Are these products safe and verified?</summary>
+    <p>Yes, we only list verified affiliate products from trusted platforms like Shopee and Lazada.</p>
+  </details>
+</section>
 
 <footer>
   © 2026 TopPickrPro • Affiliate links may earn commissions
@@ -192,8 +255,7 @@ let allProducts = [];
 let previousPrices = JSON.parse(localStorage.getItem("prices") || "{}");
 
 function parseCSV(row) {
-  return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)
-    .map(c => c.replace(/^"|"$/g, ""));
+  return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(c => c.replace(/^"|"$/g, ""));
 }
 
 function formatImage(url) {
@@ -230,6 +292,7 @@ fetch(SHEET_URL)
 
     localStorage.setItem("prices", JSON.stringify(previousPrices));
     displayProducts(allProducts);
+    injectSchema(allProducts);
   });
 
 function displayProducts(list) {
@@ -239,7 +302,7 @@ function displayProducts(list) {
       <div class="card">
         ${p.hot ? `<div class="badge">🔥 Hot Deal</div>` : ""}
         <div class="platform ${p.platformClass}">${p.platform}</div>
-        <img class="product-img" src="${p.image}" alt="${p.title} best deal Philippines">
+        <img class="product-img" src="${p.image}" alt="${p.title}">
         <div class="category">${p.category}</div>
         <h3>${p.title}</h3>
         <div class="price ${p.trend}">₱${p.price.toLocaleString()}</div>
@@ -263,6 +326,33 @@ function searchProducts() {
     p.title.toLowerCase().includes(q) ||
     p.category.toLowerCase().includes(q)
   ));
+}
+
+// Inject JSON-LD structured data for products dynamically
+function injectSchema(products){
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "TopPickrPro Shopping Deals",
+    "description": "Verified affiliate shopping deals across Tech, Health, and Fashion.",
+    "itemListElement": products.map((p,i)=>({
+      "@type": "ListItem",
+      "position": i+1,
+      "url": p.link,
+      "name": p.title,
+      "image": p.image,
+      "offers": {
+        "@type": "Offer",
+        "price": p.price,
+        "priceCurrency": "PHP",
+        "availability": "https://schema.org/InStock"
+      }
+    }))
+  };
+  const script = document.createElement("script");
+  script.type="application/ld+json";
+  script.text = JSON.stringify(schema);
+  document.head.appendChild(script);
 }
 </script>
 
