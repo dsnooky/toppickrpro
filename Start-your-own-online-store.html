@@ -7,22 +7,71 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #f8f9fa; color: #333; line-height: 1.6; }
-    .container { max-width: 700px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; }
-    h1 { font-size: 28px; margin-bottom: 20px; color: #1a73e8; }
-    h2 { font-size: 20px; margin: 20px 0 10px; color: #1a73e8; }
+    body {
+      background: #FFFFFF; /* Clean light background */
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 25px;
+      background: #F9F9F9;
+      border-radius: 12px;
+      border: 1px solid #E0E0E0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #0D47A1; /* Strong, professional blue accent */
+    }
+    h2 {
+      font-size: 22px;
+      margin: 20px 0 10px;
+      color: #0D47A1;
+    }
     p { margin-bottom: 15px; font-size: 16px; }
     ul { text-align: left; margin: 15px 0; padding-left: 20px; }
     ul li { margin-bottom: 10px; }
-    .cta-btn { display: inline-block; margin: 20px 0; padding: 15px 25px; background: #1a73e8; color: #fff; text-decoration: none; font-weight: 600; border-radius: 8px; transition: background 0.3s ease; cursor: pointer; }
-    .cta-btn:hover { background: #155ab6; }
-    .highlight { color: #1a73e8; font-weight: 600; }
+    .cta-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 15px 30px;
+      background: #0D47A1; /* CTA button uses main accent */
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .cta-btn:hover {
+      background: #08306A;
+      transform: scale(1.03);
+    }
+    .highlight { color: #0D47A1; font-weight: 600; }
     .fake-comments { margin-top: 30px; text-align: left; }
-    .comment { background: #f1f3f5; padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; }
-    .comment strong { color: #1a73e8; }
-    .urgency { background: #ffe5e5; padding: 10px; border-radius: 8px; color: #d93025; font-weight: 600; margin: 20px 0; }
-    .slots-counter { font-weight: 700; font-size: 18px; color: #d93025; }
-    @media (max-width: 768px) { .container { margin: 20px 15px; padding: 15px; } h1 { font-size: 24px; } h2 { font-size: 18px; } }
+    .comment {
+      background: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #DADADA;
+      margin-bottom: 12px;
+    }
+    .comment strong { color: #0D47A1; }
+    .urgency {
+      background: #FFF3E0; 
+      padding: 12px;
+      border-radius: 8px;
+      color: #E65100;
+      font-weight: 600;
+      margin: 20px 0;
+    }
+    .slots-counter {
+      font-weight: 700;
+      font-size: 18px;
+      color: #D84315;
+    }
   </style>
 </head>
 <body>
@@ -31,19 +80,19 @@
     <p>Gusto mo bang <span class="highlight">magkaroon ng sarili mong shopping website</span> para sa business mo? 🛒</p>
     <p>Perfect ito sa mga naghahanap ng <span class="highlight">easy-to-use, hassle-free online store</span>!</p>
     
-    <h2>Bakit kailangan mo ng sariling website?</h2>
+    <h2>Bakit Kailangan Mo ng Website?</h2>
     <ul>
       <li>Ipakita ang buong catalog ng products mo sa customers</li>
       <li>Mas professional ang business mo online</li>
       <li>Mas mabilis makakuha ng orders at sales</li>
-      <li>Control mo ang buong website, unlike sa marketplace</li>
+      <li>Control mo ang buong website, hindi tulad ng marketplaces</li>
     </ul>
     
-    <h2>Madali lang i-manage!</h2>
+    <h2>Madali Lang i-Manage!</h2>
     <ul>
-      <li>Update products at prices <span class="highlight">direktang sa Google Sheets</span> – automatic na siyang magre-reflect sa website!</li>
+      <li>Update products at prices <span class="highlight">diretang sa Google Sheets</span> – automatic na siyang magre-reflect sa website!</li>
       <li>Walang technical skills needed</li>
-      <li>Mobile friendly and ready to sell</li>
+      <li>Mobile friendly at ready to sell</li>
     </ul>
     
     <p>💡 <span class="highlight">Kumita at mag-scale ng business mo</span> – all in one platform!</p>
@@ -52,25 +101,23 @@
       ⏰ Limited slots available! <span class="slots-counter" id="slotsCounter">20</span> slots left. Don’t miss out!
     </div>
     
-    <div class="cta-btn" id="ctaButton">Start My Online Store Now</div>
+    <a href="#" class="cta-btn" id="ctaButton">Start My Online Store Now</a>
 
-    <!-- Fake social proof comments -->
     <div class="fake-comments">
       <h2>What others are saying:</h2>
-      <div class="comment"><strong>Anna P.:</strong> Wow! Super dali i-update ng products, I can manage everything straight from Google Sheets!</div>
-      <div class="comment"><strong>Mark R.:</strong> This helped me scale my online store fast. Sales doubled within a week!</div>
-      <div class="comment"><strong>Jessa L.:</strong> Professional looking website kahit hindi ako techie. Love it!</div>
-      <div class="comment"><strong>Ken T.:</strong> Mobile-friendly and easy to navigate. Customers love it!</div>
+      <div class="comment"><strong>Anna P.:</strong> Super dali i-update ang products — from Google Sheets direct!</div>
+      <div class="comment"><strong>Mark R.:</strong> Sales doubled within a week after launching my site!</div>
+      <div class="comment"><strong>Jessa L.:</strong> Professional website kahit hindi ako techie — love it!</div>
+      <div class="comment"><strong>Ken T.:</strong> Mobile friendly and easy to navigate — customers love it!</div>
     </div>
   </div>
 
   <script>
-    // Slots counter logic
-    let slots = 20; 
+    let slots = 20;
     const counter = document.getElementById('slotsCounter');
 
     function decreaseSlots() {
-      if (slots > 3) { 
+      if (slots > 3) {
         slots--;
         counter.textContent = slots;
       }
@@ -78,16 +125,9 @@
 
     setInterval(decreaseSlots, 5000);
 
-    // CTA click tracking + redirect
-    const CTA_URL = "https://wa.me/your-number"; // change this to your target link
+    const CTA_URL = "https://wa.me/your-number";
     document.getElementById('ctaButton').addEventListener('click', () => {
-      decreaseSlots(); // decrease slots on click
-
-      // Tracking: you can use fetch to send data to your own server
-      // Example: fetch('https://yourserver.com/track?click=1');
-      console.log('Click tracked'); // placeholder
-
-      // Redirect after 200ms for tracking
+      decreaseSlots();
       setTimeout(() => {
         window.location.href = CTA_URL;
       }, 200);
