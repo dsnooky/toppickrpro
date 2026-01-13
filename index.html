@@ -12,6 +12,7 @@
   <meta name="keywords" content="earn money online, affiliate marketing, freelancing, online income, work from home" />
 
   <link rel="icon" href="favicon.png" type="image/png">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -20,15 +21,23 @@
       margin: 0;
       line-height: 1.7;
       color: #fff;
-      background: #0b0c10;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       scroll-behavior: smooth;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     a { text-decoration: none; color: inherit; }
 
     header {
-      background: linear-gradient(135deg, #1f2833, #0b0c10);
-      padding: 50px 20px;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      padding: 40px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
@@ -42,49 +51,39 @@
     }
 
     header img.logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 15px;
-      transition: transform 0.3s;
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
     }
-
-    header img.logo:hover { transform: rotate(10deg); }
 
     header .header-text h1 {
       font-size: 2.8rem;
       margin: 0;
       font-weight: 700;
-      color: #f5c518;
     }
 
     header .header-text p {
       margin-top: 8px;
       max-width: 600px;
       font-size: 1rem;
-      opacity: 0.85;
-      color: #dcdcdc;
+      opacity: 0.9;
     }
 
     nav {
-      background: #1c1c1c;
+      background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.65));
       padding: 15px 20px;
       display: flex;
       justify-content: center;
       gap: 25px;
       flex-wrap: wrap;
-      border-bottom: 1px solid #333;
     }
 
     nav a {
       color: #fff;
       font-weight: 500;
-      transition: color 0.3s, transform 0.2s;
     }
 
-    nav a:hover {
-      color: #f5c518;
-      transform: scale(1.05);
-    }
+    nav a:hover { color: #ffeb3b; }
 
     section {
       max-width: 1100px;
@@ -95,9 +94,8 @@
     h2 {
       text-align: center;
       font-size: 2rem;
-      margin-bottom: 35px;
-      color: #f5c518;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      margin-bottom: 25px;
+      color: #fff;
     }
 
     .intro p {
@@ -105,77 +103,42 @@
       margin: auto;
       margin-bottom: 15px;
       text-align: center;
-      color: #ccc;
-      font-size: 1rem;
+      color: #eee;
     }
 
-    /* Blog Grid Upgraded */
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
       margin-top: 40px;
     }
 
     .post {
       border-radius: 15px;
-      background: linear-gradient(135deg, rgba(245,197,24,0.1), rgba(255,255,255,0.05));
-      border: 1px solid rgba(245,197,24,0.3);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
-      display: flex;
-      flex-direction: column;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       text-align: center;
     }
 
-    .post:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    }
-
-    .post img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .post img:hover {
-      transform: scale(1.05);
-    }
-
-    .post-content {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
     .post h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #f5c518;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #ffeb3b;
     }
 
     .post p {
-      font-size: 1rem;
-      color: #e0e0e0;
-      flex: 1;
+      font-size: 0.95rem;
+      color: #f1f1f1;
     }
 
     .post a.read {
       display: inline-block;
       margin-top: 15px;
-      color: #f5c518;
+      color: #ffeb3b;
       font-weight: 500;
-      transition: color 0.3s, transform 0.2s;
-    }
-
-    .post a.read:hover {
-      color: #fff;
-      transform: scale(1.05);
     }
 
     footer {
@@ -183,17 +146,15 @@
       padding: 40px 20px;
       font-size: 0.9rem;
       color: #bbb;
-      background: linear-gradient(to top, #1c1c1c, #111);
-      border-top: 1px solid #333;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
     }
 
     footer a {
       color: #bbb;
       margin: 0 10px;
-      transition: color 0.3s;
     }
 
-    footer a:hover { color: #f5c518; }
+    footer a:hover { color: #ffeb3b; }
 
     @media (max-width: 768px) {
       .header-container {
@@ -227,8 +188,8 @@
   <a href="privacy-policy.html">Privacy Policy</a>
   <a href="terms.html">Terms</a>
   <a href="disclaimer.html">Disclaimer</a>
+  
 </nav>
-
 <section class="intro">
   <h2>Learn How to Earn Money Online the Right Way</h2>
   <p>TopPickrPro is an educational platform created to help beginners understand legitimate ways to earn money online.</p>
@@ -238,99 +199,67 @@
 <section id="blog">
   <h2>Latest Blog Articles</h2>
   <div class="blog-grid">
-    
+   <div class="post">
+      <h3>Creating Digital Products How to Start Market and Earn Online</h3>
+      <p>Learn how to earn money through shopping affiliate marketing, including how it works, how to start, and tips for building sustainable income.</p>
+      <a class="read" href="Creating Digital Products How to Start Market and Earn Online.html">Read Article →</a>
+    </div>
     <div class="post">
-      <img src="images/blog1.jpg" alt="Creating Digital Products">
-      <div class="post-content">
-        <h3>Creating Digital Products How to Start Market and Earn Online</h3>
-        <p>Learn how to earn money through shopping affiliate marketing, including how it works, how to start, and tips for building sustainable income.</p>
-        <a class="read" href="Creating Digital Products How to Start Market and Earn Online.html">Read Article →</a>
-      </div>
+      <h3>Earning Money Through Shopping Affiliate Marketing</h3>
+      <p>Learn how to earn money through shopping affiliate marketing.</p>
+      <a class="read" href="shopping-affiliate-marketing-guide.html">Read Article →</a>
+    </div>
+    <div class="post">
+      <h3>How Beginners Can Earn Money Online Legitimately</h3>
+      <p>A beginner-friendly guide explaining realistic and legal ways to earn money online.</p>
+      <a class="read" href="how-to-earn-money-online.html">Read Article →</a>
     </div>
 
     <div class="post">
-      <img src="images/blog2.jpg" alt="Earning Money Through Affiliate Marketing">
-      <div class="post-content">
-        <h3>Earning Money Through Shopping Affiliate Marketing</h3>
-        <p>Learn how to earn money through shopping affiliate marketing.</p>
-        <a class="read" href="shopping-affiliate-marketing-guide.html">Read Article →</a>
-      </div>
+      <h3>Affiliate Marketing for Beginners</h3>
+      <p>Learn how affiliate marketing works and how beginners can start ethically.</p>
+      <a class="read" href="affiliate-marketing-for-beginners.html">Read Article →</a>
     </div>
 
     <div class="post">
-      <img src="images/blog3.jpg" alt="How Beginners Can Earn Money Online">
-      <div class="post-content">
-        <h3>How Beginners Can Earn Money Online Legitimately</h3>
-        <p>A beginner-friendly guide explaining realistic and legal ways to earn money online.</p>
-        <a class="read" href="how-to-earn-money-online.html">Read Article →</a>
-      </div>
+      <h3>Best Online Skills That Pay Well</h3>
+      <p>Discover digital skills that can help you earn money through remote work.</p>
+      <a class="read" href="best-online-skills-that-pay.html">Read Article →</a>
     </div>
 
     <div class="post">
-      <img src="images/blog4.jpg" alt="Affiliate Marketing for Beginners">
-      <div class="post-content">
-        <h3>Affiliate Marketing for Beginners</h3>
-        <p>Learn how affiliate marketing works and how beginners can start ethically.</p>
-        <a class="read" href="affiliate-marketing-for-beginners.html">Read Article →</a>
-      </div>
+      <h3>How Freelancing Works</h3>
+      <p>A simple explanation of freelancing platforms and how beginners can start.</p>
+      <a class="read" href="how-freelancing-works.html">Read Article →</a>
     </div>
 
     <div class="post">
-      <img src="images/blog5.jpg" alt="Best Online Skills That Pay">
-      <div class="post-content">
-        <h3>Best Online Skills That Pay Well</h3>
-        <p>Discover digital skills that can help you earn money through remote work.</p>
-        <a class="read" href="best-online-skills-that-pay.html">Read Article →</a>
-      </div>
+      <h3>Online Money Scams to Avoid</h3>
+      <p>Learn how to identify common scams and protect yourself online.</p>
+      <a class="read" href="online-money-scams-to-avoid.html">Read Article →</a>
     </div>
-
-    <div class="post">
-      <img src="images/blog6.jpg" alt="How Freelancing Works">
-      <div class="post-content">
-        <h3>How Freelancing Works</h3>
-        <p>A simple explanation of freelancing platforms and how beginners can start.</p>
-        <a class="read" href="how-freelancing-works.html">Read Article →</a>
-      </div>
-    </div>
-
-    <div class="post">
-      <img src="images/blog7.jpg" alt="Online Money Scams to Avoid">
-      <div class="post-content">
-        <h3>Online Money Scams to Avoid</h3>
-        <p>Learn how to identify common scams and protect yourself online.</p>
-        <a class="read" href="online-money-scams-to-avoid.html">Read Article →</a>
-      </div>
-    </div>
-
   </div>
 </section>
-
-<section id="shopping-preview">
+  
+  <section id="shopping-preview">
   <h2>Recommended Online Shopping Deals</h2>
   <div class="blog-grid">
 
     <div class="post">
-      <img src="images/shopping1.jpg" alt="Shopee Finds Under ₱500">
-      <div class="post-content">
-        <h3>Best Shopee Finds Under ₱500</h3>
-        <p>Curated affordable items you can promote and earn from through affiliate marketing.</p>
-        <a class="read" href="shopping.html">View Deals →</a>
-      </div>
+      <h3>Best Shopee Finds Under ₱500</h3>
+      <p>Curated affordable items you can promote and earn from through affiliate marketing.</p>
+      <a class="read" href="shopping.html">View Deals →</a>
     </div>
 
     <div class="post">
-      <img src="images/shopping2.jpg" alt="Affiliate-Friendly Products">
-      <div class="post-content">
-        <h3>Affiliate-Friendly Products</h3>
-        <p>Products with high demand and good commission potential.</p>
-        <a class="read" href="shopping.html">Explore →</a>
-      </div>
+      <h3>Affiliate-Friendly Products</h3>
+      <p>Products with high demand and good commission potential.</p>
+      <a class="read" href="shopping.html">Explore →</a>
     </div>
 
   </div>
-</section>
-
-<footer>
+  </section>
+  <footer>
   <p>© 2026 TopPickrPro. All rights reserved.</p>
   <p>
     <a href="privacy-policy.html">Privacy Policy</a> |
