@@ -1,0 +1,6 @@
+<script>
+const links = JSON.parse(localStorage.getItem("links")||"{}");
+const p = new URLSearchParams(location.search).get("product");
+if(links[p]) location.replace(links[p]);
+else document.body.innerHTML="Invalid link";
+</script>
