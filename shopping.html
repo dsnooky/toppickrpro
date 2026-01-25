@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392667265249786"
-    crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Shopping Deals & Affiliate Picks | TopPickrPro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Top affiliate shopping deals in Tech, Health, and Fashion. Updated live from Google Sheets.">
+  <meta name="robots" content="index, follow">
 
-  <!-- Google Analytics GA4 -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9C0Y6D9TPK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,22 +16,12 @@
     gtag('config', 'G-9C0Y6D9TPK');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta -->
-  <title>Shopping Deals & Affiliate Picks | TopPickrPro</title>
-  <meta name="description" content="Discover verified affiliate shopping deals in Tech, Health, and Fashion. Prices update automatically. Save money with TopPickrPro!">
-  <meta name="keywords" content="affiliate shopping philippines, shopee affiliate, lazada affiliate, tech deals, fashion deals, health deals">
-  <meta name="robots" content="index, follow">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
+      font-family: 'Poppins', sans-serif;
       color: #fff;
       background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
       background-size: 400% 400%;
@@ -44,6 +36,9 @@
       background: rgba(0,0,0,0.85);
       padding: 15px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     nav a {
       margin: 0 15px;
@@ -52,71 +47,96 @@
       font-weight: 500;
     }
     nav a:hover { color: #ffeb3b; }
+
     section {
       max-width: 1200px;
       margin: auto;
-      padding: 70px 20px;
+      padding: 60px 20px;
     }
-    h1 {
+    h1 { text-align: center; }
+
+    .search-bar {
       text-align: center;
-    }
-    .search-bar, .filter-bar {
-      text-align: center;
-      margin-top: 25px;
-    }
-    .btn {
-      padding: 10px 20px;
-      background: #ffeb3b;
-      color: #000;
-      border-radius: 25px;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      margin: 5px;
-      text-decoration: none;
+      margin: 25px 0;
     }
     .search-bar input {
-      padding: 12px 18px;
       width: 90%;
       max-width: 420px;
+      padding: 12px 18px;
       border-radius: 25px;
       border: none;
       font-size: 1rem;
     }
+
+    .category-nav {
+      position: sticky;
+      top: 70px;
+      z-index: 50;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px auto 40px;
+      max-width: 600px;
+    }
+    .category-nav button {
+      background: transparent;
+      border: 2px solid #ffeb3b;
+      color: #ffeb3b;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .category-nav button:hover {
+      background: #ffeb3b;
+      color: #000;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
-      margin-top: 40px;
     }
+
+    .category-section {
+      grid-column: 1 / -1;
+      margin-top: 60px;
+      text-align: center;
+    }
+    .category-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .category-divider {
+      width: 120px;
+      height: 4px;
+      background: #ffeb3b;
+      margin: 12px auto 30px;
+      border-radius: 10px;
+    }
+
     .card {
       background: rgba(255,255,255,0.15);
       border-radius: 15px;
-      padding: 20px;
+      padding: 18px;
       backdrop-filter: blur(12px);
-      text-align: center;
       position: relative;
+      text-align: center;
     }
+
     .product-img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4/3;
       object-fit: contain;
       background: #000;
       border-radius: 12px;
       margin-bottom: 12px;
     }
-    @media (max-width: 768px) {
-      .product-img {
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-      }
-    }
-    @media (min-width: 769px) {
-      .card:hover .product-img {
-        transform: scale(1.05);
-        transition: transform 0.3s ease;
-      }
-    }
+
     .badge {
       position: absolute;
       top: 15px;
@@ -127,6 +147,12 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
+    .badge.top {
+      top: 50px;
+      background: #ffeb3b;
+      color: #000;
+    }
+
     .platform {
       position: absolute;
       top: 15px;
@@ -135,33 +161,26 @@
       border-radius: 20px;
       font-size: 0.7rem;
       font-weight: 600;
-      color: #fff;
     }
     .platform.shopee { background: #ee4d2d; }
     .platform.lazada { background: #1a1aff; }
     .platform.other { background: #444; }
-    .category { font-size: 0.8rem; opacity: 0.85; }
-    .price {
-      font-weight: 600;
-      margin: 6px 0;
-    }
+
+    .price { font-weight: 600; margin: 6px 0; }
     .price.up { color: #ff5252; }
     .price.down { color: #4caf50; }
-    .stats {
-      font-size: 0.8rem;
-      opacity: 0.85;
-      margin-bottom: 12px;
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 22px;
+      background: #ffeb3b;
+      color: #000;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
     }
-    .skeleton {
-      height: 280px;
-      border-radius: 15px;
-      background: linear-gradient(90deg,#ffffff10,#ffffff30,#ffffff10);
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: -200px 0; }
-      100% { background-position: 200px 0; }
-    }
+
     footer {
       text-align: center;
       padding: 40px;
@@ -169,79 +188,30 @@
       opacity: 0.8;
       background: rgba(0,0,0,0.6);
     }
-    /* FAQ Section */
-    .faq-section {
-      max-width: 900px;
-      margin: 60px auto;
-      background: rgba(0,0,0,0.3);
-      padding: 25px 20px;
-      border-radius: 15px;
-    }
-    .faq-section h2 { text-align: center; margin-bottom: 20px; }
-    .faq-item { margin-bottom: 15px; }
-    .faq-item summary { cursor: pointer; font-weight: 600; font-size: 1rem; }
-    .faq-item p { margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9; }
   </style>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "TopPickrPro Shopping Deals",
-    "description": "Verified affiliate shopping deals across Tech, Health, and Fashion.",
-    "itemListElement": []
-  }
-  </script>
 </head>
 
 <body>
 
 <nav>
-  <a href="index.html">Home</a>
-  <a href="shopping.html">Shopping</a>
-  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="#">Home</a>
+  <a href="#">Shopping</a>
+  <a href="#">Privacy Policy</a>
 </nav>
 
 <section>
   <h1>Shopping Deals & Affiliate Picks</h1>
   <p style="text-align:center;max-width:800px;margin:auto;">
-    Verified products synced live from Google Sheets. Prices and deals update automatically.
+    Verified affiliate products updated live from Google Sheets.
   </p>
 
   <div class="search-bar">
     <input id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
   </div>
 
-  <div class="filter-bar">
-    <button class="btn" onclick="filterCategory('All')">All</button>
-    <button class="btn" onclick="filterCategory('Tech')">Tech</button>
-    <button class="btn" onclick="filterCategory('Health')">Health</button>
-    <button class="btn" onclick="filterCategory('Fashion')">Fashion</button>
-  </div>
+  <div class="category-nav" id="categoryNav"></div>
 
-  <div class="grid" id="productGrid">
-    <div class="skeleton"></div>
-    <div class="skeleton"></div>
-    <div class="skeleton"></div>
-  </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="faq-section">
-  <h2>Frequently Asked Questions</h2>
-  <details class="faq-item">
-    <summary>What types of deals are offered?</summary>
-    <p>We offer verified affiliate deals across Tech, Health, and Fashion products.</p>
-  </details>
-  <details class="faq-item">
-    <summary>How often are prices updated?</summary>
-    <p>Prices and availability are synced live from Google Sheets daily.</p>
-  </details>
-  <details class="faq-item">
-    <summary>Are these products safe and verified?</summary>
-    <p>Yes, we only list verified affiliate products from trusted platforms like Shopee and Lazada.</p>
-  </details>
+  <div class="grid" id="productGrid"></div>
 </section>
 
 <footer>
@@ -249,110 +219,102 @@
 </footer>
 
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLM17tQ90vAyH89socUE35R31UUkISJKoiCbtP_-7xjRFae5H56B9ZaA6LAp9_spwnW-S_kW1AThba/pub?output=csv";
+const SHEET_URL = "PASTE_YOUR_PUBLISHED_CSV_URL_HERE";
 const grid = document.getElementById("productGrid");
+const nav = document.getElementById("categoryNav");
 let allProducts = [];
-let previousPrices = JSON.parse(localStorage.getItem("prices") || "{}");
 
 function parseCSV(row) {
   return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(c => c.replace(/^"|"$/g, ""));
-}
-
-function formatImage(url) {
-  if (!url) return "https://via.placeholder.com/400x300";
-  if (url.includes("drive.google.com")) {
-    const id = url.match(/[-\w]{25,}/);
-    return id ? `https://drive.google.com/uc?id=${id[0]}` : url;
-  }
-  return url;
 }
 
 fetch(SHEET_URL)
   .then(r => r.text())
   .then(csv => {
     const rows = csv.trim().split("\n").slice(1);
-    grid.innerHTML = "";
-
     allProducts = rows.map(r => {
       const [title, category, price, rating, sold, hot, platform, image, link] = parseCSV(r);
-      const numPrice = parseFloat(price.replace(/[^\d.]/g,""));
-      const old = previousPrices[title];
-      previousPrices[title] = numPrice;
-
       return {
-        title, category, rating, sold, hot: hot==="TRUE", link,
-        price: numPrice,
-        trend: old ? (numPrice > old ? "up" : numPrice < old ? "down" : "") : "",
+        title, category,
+        price: parseFloat(price.replace(/[^\d.]/g,"")),
+        rating: parseFloat(rating) || 0,
+        sold: parseInt(sold) || 0,
+        hot: hot === "TRUE",
         platform,
         platformClass: platform?.toLowerCase().includes("shopee") ? "shopee" :
                        platform?.toLowerCase().includes("lazada") ? "lazada" : "other",
-        image: formatImage(image)
+        image,
+        link
       };
     });
-
-    localStorage.setItem("prices", JSON.stringify(previousPrices));
     displayProducts(allProducts);
-    injectSchema(allProducts);
   });
 
 function displayProducts(list) {
   grid.innerHTML = "";
+  nav.innerHTML = "";
+
+  const grouped = {};
   list.forEach(p => {
+    if (!grouped[p.category]) grouped[p.category] = [];
+    grouped[p.category].push(p);
+  });
+
+  Object.keys(grouped).forEach(cat => {
+    const btn = document.createElement("button");
+    btn.textContent = cat;
+    btn.onclick = () =>
+      document.getElementById("cat-"+cat).scrollIntoView({behavior:"smooth"});
+    nav.appendChild(btn);
+  });
+
+  Object.keys(grouped).forEach(cat => {
+    const sorted = grouped[cat].sort((a,b)=>
+      (b.hot-a.hot) || b.rating-a.rating || b.sold-a.sold
+    );
+    const top = sorted.slice(0,3);
+    const rest = sorted.slice(3);
+
     grid.innerHTML += `
-      <div class="card">
-        ${p.hot ? `<div class="badge">🔥 Hot Deal</div>` : ""}
-        <div class="platform ${p.platformClass}">${p.platform}</div>
-        <img class="product-img" src="${p.image}" alt="${p.title}">
-        <div class="category">${p.category}</div>
-        <h3>${p.title}</h3>
-        <div class="price ${p.trend}">₱${p.price.toLocaleString()}</div>
-        <div class="stats">⭐ ${p.rating} • ${p.sold}</div>
-        <a class="btn" href="${p.link}" target="_blank"
-          onclick="gtag('event','affiliate_click',{event_label:'${p.title}'})">
-          View Deal
-        </a>
-      </div>
-    `;
+      <div id="cat-${cat}" class="category-section">
+        <div class="category-title">⭐ Top ${cat} Picks</div>
+        <div class="category-divider"></div>
+      </div>`;
+    top.forEach(p=>renderCard(p,true));
+
+    if(rest.length){
+      grid.innerHTML += `
+        <div class="category-section">
+          <div class="category-title">${cat} Deals</div>
+          <div class="category-divider"></div>
+        </div>`;
+      rest.forEach(p=>renderCard(p,false));
+    }
   });
 }
 
-function filterCategory(c) {
-  displayProducts(c==="All" ? allProducts : allProducts.filter(p => p.category===c));
+function renderCard(p,isTop){
+  grid.innerHTML += `
+    <div class="card">
+      ${p.hot?`<div class="badge">🔥 Hot</div>`:""}
+      ${isTop?`<div class="badge top">⭐ Top Pick</div>`:""}
+      <div class="platform ${p.platformClass}">${p.platform}</div>
+      <img class="product-img" src="${p.image}">
+      <h3>${p.title}</h3>
+      <div class="price">₱${p.price.toLocaleString()}</div>
+      <a class="btn" href="/go?product=${encodeURIComponent(p.title)}"
+         onclick="gtag('event','affiliate_click',{event_label:'${p.title}'})">
+         View Deal
+      </a>
+    </div>`;
 }
 
-function searchProducts() {
+function searchProducts(){
   const q = searchInput.value.toLowerCase();
   displayProducts(allProducts.filter(p =>
     p.title.toLowerCase().includes(q) ||
     p.category.toLowerCase().includes(q)
   ));
-}
-
-// Inject JSON-LD structured data for products dynamically
-function injectSchema(products){
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "TopPickrPro Shopping Deals",
-    "description": "Verified affiliate shopping deals across Tech, Health, and Fashion.",
-    "itemListElement": products.map((p,i)=>({
-      "@type": "ListItem",
-      "position": i+1,
-      "url": p.link,
-      "name": p.title,
-      "image": p.image,
-      "offers": {
-        "@type": "Offer",
-        "price": p.price,
-        "priceCurrency": "PHP",
-        "availability": "https://schema.org/InStock"
-      }
-    }))
-  };
-  const script = document.createElement("script");
-  script.type="application/ld+json";
-  script.text = JSON.stringify(schema);
-  document.head.appendChild(script);
 }
 </script>
 
