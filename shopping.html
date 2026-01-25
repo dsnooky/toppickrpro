@@ -41,33 +41,14 @@
       top: 0;
       z-index: 100;
     }
-    nav a {
-      margin: 0 15px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
+    nav a { margin: 0 15px; color: #fff; text-decoration: none; font-weight: 500; }
     nav a:hover { color: #ffeb3b; }
 
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+    section { max-width: 1200px; margin: auto; padding: 60px 20px; }
     h1 { text-align: center; }
 
-    .search-bar {
-      text-align: center;
-      margin: 25px 0;
-    }
-    .search-bar input {
-      width: 90%;
-      max-width: 420px;
-      padding: 12px 18px;
-      border-radius: 25px;
-      border: none;
-      font-size: 1rem;
-    }
+    .search-bar { text-align: center; margin: 25px 0; }
+    .search-bar input { width: 90%; max-width: 420px; padding: 12px 18px; border-radius: 25px; border: none; font-size: 1rem; }
 
     .category-nav {
       position: sticky;
@@ -92,33 +73,13 @@
       font-weight: 600;
       cursor: pointer;
     }
-    .category-nav button:hover {
-      background: #ffeb3b;
-      color: #000;
-    }
+    .category-nav button:hover { background: #ffeb3b; color: #000; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
 
-    .category-section {
-      grid-column: 1 / -1;
-      margin-top: 60px;
-      text-align: center;
-    }
-    .category-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-    .category-divider {
-      width: 120px;
-      height: 4px;
-      background: #ffeb3b;
-      margin: 12px auto 30px;
-      border-radius: 10px;
-    }
+    .category-section { grid-column: 1 / -1; margin-top: 60px; text-align: center; }
+    .category-title { font-size: 1.6rem; font-weight: 700; }
+    .category-divider { width: 120px; height: 4px; background: #ffeb3b; margin: 12px auto 30px; border-radius: 10px; }
 
     .card {
       background: rgba(255,255,255,0.15);
@@ -129,62 +90,19 @@
       text-align: center;
     }
 
-    .product-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: contain;
-      background: #000;
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
+    .product-img { width: 100%; aspect-ratio: 4/3; object-fit: contain; background: #000; border-radius: 12px; margin-bottom: 12px; }
 
-    .badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: #ff5722;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .badge.top {
-      top: 50px;
-      background: #ffeb3b;
-      color: #000;
-    }
+    .badge { position: absolute; top: 15px; left: 15px; background: #ff5722; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+    .badge.top { top: 50px; background: #ffeb3b; color: #000; }
 
-    .platform {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
+    .platform { position: absolute; top: 15px; right: 15px; padding: 6px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
     .platform.shopee { background: #ee4d2d; }
     .platform.lazada { background: #1a1aff; }
     .platform.other { background: #444; }
 
-    .btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 22px;
-      background: #ffeb3b;
-      color: #000;
-      border-radius: 25px;
-      font-weight: 600;
-      text-decoration: none;
-    }
+    .btn { display: inline-block; margin-top: 12px; padding: 10px 22px; background: #ffeb3b; color: #000; border-radius: 25px; font-weight: 600; text-decoration: none; }
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      font-size: 0.85rem;
-      opacity: 0.8;
-      background: rgba(0,0,0,0.6);
-    }
+    footer { text-align: center; padding: 40px; font-size: 0.85rem; opacity: 0.8; background: rgba(0,0,0,0.6); }
   </style>
 </head>
 
@@ -215,7 +133,7 @@
 </footer>
 
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLM17tQ90vAyH89socUE35R31UUkISJKoiCbtP_-7xjRFae5H56B9ZaA6LAp9_spwnW-S_kW1AThba/pubhtml";
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLM17tQ90vAyH89socUE35R31UUkISJKoiCbtP_-7xjRFae5H56B9ZaA6LAp9_spwnW-S_kW1AThba/pub?output=csv";
 const grid = document.getElementById("productGrid");
 const nav = document.getElementById("categoryNav");
 let allProducts = [];
@@ -223,6 +141,10 @@ let allProducts = [];
 function parseCSV(row) {
   return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g)
             .map(c => c.replace(/^"|"$/g, ""));
+}
+
+function sanitizeID(str) {
+  return str.toLowerCase().replace(/\s+/g,'-').replace(/[^\w-]/g,'');
 }
 
 fetch(SHEET_URL)
@@ -234,6 +156,7 @@ fetch(SHEET_URL)
       return {
         title,
         category,
+        safeCategoryID: sanitizeID(category),
         rating: parseFloat(rating) || 0,
         sold: parseInt(sold) || 0,
         hot: hot === "TRUE",
@@ -262,7 +185,8 @@ function displayProducts(list) {
     const btn = document.createElement("button");
     btn.textContent = cat;
     btn.onclick = () =>
-      document.getElementById("cat-" + cat).scrollIntoView({ behavior: "smooth" });
+      document.getElementById(allProducts.find(p => p.category === cat).safeCategoryID)
+        .scrollIntoView({ behavior: "smooth" });
     nav.appendChild(btn);
   });
 
@@ -275,7 +199,7 @@ function displayProducts(list) {
     const rest = sorted.slice(3);
 
     grid.innerHTML += `
-      <div id="cat-${cat}" class="category-section">
+      <div id="${allProducts.find(p => p.category === cat).safeCategoryID}" class="category-section">
         <div class="category-title">⭐ Top ${cat} Picks</div>
         <div class="category-divider"></div>
       </div>`;
@@ -299,9 +223,9 @@ function renderCard(p, isTop) {
       ${p.hot ? `<div class="badge">🔥 Hot</div>` : ""}
       ${isTop ? `<div class="badge top">⭐ Top Pick</div>` : ""}
       <div class="platform ${p.platformClass}">${p.platform}</div>
-      <img class="product-img" src="${p.image}" alt="${p.title}">
+      <img class="product-img" src="${p.image}" alt="${p.title}" loading="lazy">
       <h3>${p.title}</h3>
-      <a class="btn" href="/go?product=${encodeURIComponent(p.title)}"
+      <a class="btn" href="${p.link}" target="_blank"
          onclick="gtag('event','affiliate_click',{event_label:'${p.title}'})">
          View Deal
       </a>
