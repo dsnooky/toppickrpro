@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Shopping Deals & Price Comparison | TopPickrPro</title>
+<title>Affiliate Picks & Best Deals | TopPickrPro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Compare Shopee and Lazada prices. Auto-updated affiliate deals.">
+<meta name="description" content="Curated affiliate picks from Shopee and Lazada. Updated automatically.">
 <meta name="robots" content="index,follow">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{
-  margin:0;
-  font-family:Poppins,sans-serif;
+  margin:0;font-family:Poppins,sans-serif;
   background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364);
   background-size:400% 400%;
   animation:bg 15s ease infinite;
@@ -21,11 +20,9 @@ body{
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
 nav{
-  position:sticky;top:0;
+  position:sticky;top:0;z-index:100;
   background:rgba(0,0,0,.85);
-  padding:15px;
-  text-align:center;
-  z-index:100;
+  padding:15px;text-align:center
 }
 nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:500}
 nav a:hover{color:#ffeb3b}
@@ -35,8 +32,8 @@ section{max-width:1200px;margin:auto;padding:60px 20px}
 .search-bar{text-align:center;margin:25px 0}
 .search-bar input{
   width:90%;max-width:420px;
-  padding:12px 18px;
-  border-radius:25px;border:none;font-size:1rem
+  padding:12px 18px;border-radius:25px;
+  border:none;font-size:1rem
 }
 
 .category-nav{
@@ -45,7 +42,7 @@ section{max-width:1200px;margin:auto;padding:60px 20px}
   background:rgba(0,0,0,.6);
   backdrop-filter:blur(10px);
   padding:10px;border-radius:30px;
-  max-width:600px;margin:30px auto 40px;
+  max-width:600px;margin:30px auto 40px
 }
 .category-nav button{
   background:transparent;border:2px solid #ffeb3b;
@@ -72,18 +69,14 @@ section{max-width:1200px;margin:auto;padding:60px 20px}
   background:#ff5722;padding:6px 12px;
   border-radius:20px;font-size:.75rem;font-weight:600
 }
-.badge.top{top:50px;background:#ffeb3b;color:#000}
-
 .btn{
   display:block;margin:10px 0;
   padding:10px;border-radius:25px;
   text-decoration:none;font-weight:600;
   background:#ffeb3b;color:#000
 }
-.btn.best{
-  background:#4caf50;
-  box-shadow:0 0 15px rgba(76,175,80,.6)
-}
+.btn.shopee{background:#ee4d2d;color:#fff}
+.btn.lazada{background:#1a1aff;color:#fff}
 
 .category-section{
   grid-column:1/-1;text-align:center;margin-top:60px
@@ -106,7 +99,7 @@ footer{text-align:center;padding:40px;font-size:.85rem;background:rgba(0,0,0,.6)
 </nav>
 
 <section>
-  <h1 style="text-align:center">Compare Prices & Best Deals</h1>
+  <h1 style="text-align:center">Top Affiliate Picks</h1>
 
   <div class="search-bar">
     <input id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
@@ -119,44 +112,32 @@ footer{text-align:center;padding:40px;font-size:.85rem;background:rgba(0,0,0,.6)
 <footer>© 2026 TopPickrPro • Affiliate links may earn commission</footer>
 
 <script>
-const SHEET_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vTLM17tQ90vAyH89socUE35R31UUkISJKoiCbtP_-7xjRFae5H56B9ZaA6LAp9_spwnW-S_kW1AThba/pub?output=csv";
-const grid=document.getElementById("productGrid");
-const nav=document.getElementById("categoryNav");
-let allProducts=[];
+const SHEET_URL = "PUT_YOUR_CSV_URL_HERE";
+const grid = document.getElementById("productGrid");
+const nav = document.getElementById("categoryNav");
+let allProducts = [];
 
 function parseCSV(row){
-  const r=[],q=false;let c="";
+  const out=[];let cur="",q=false;
   for(let i=0;i<row.length;i++){
-    const ch=row[i];
-    if(ch=='"'&&row[i+1]=='"'){c+='"';i++}
-    else if(ch=='"'){}
-    else if(ch==","&&!q){r.push(c);c=""}
-    else c+=ch
+    const c=row[i];
+    if(c=='"'&&row[i+1]=='"'){cur+='"';i++}
+    else if(c=='"'){q=!q}
+    else if(c==","&&!q){out.push(cur);cur=""}
+    else cur+=c;
   }
-  r.push(c);return r
+  out.push(cur);
+  return out.map(x=>x.replace(/^"|"$/g,"").trim());
 }
 
 function slugify(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,"-")}
 function esc(t=""){return t.replace(/[&<>"']/g,m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]))}
 
 fetch(SHEET_URL).then(r=>r.text()).then(csv=>{
-  const rows=csv.trim().split("\n").slice(1);
-  allProducts=rows.map(r=>{
-    const[
-      id,title,category,
-      sp,sl,lp,ll,
-      rating,sold,image
-    ]=parseCSV(r);
-
-    const prices=[];
-    if(sp)prices.push({platform:"Shopee",price:+sp.replace(/\D/g,""),link:sl});
-    if(lp)prices.push({platform:"Lazada",price:+lp.replace(/\D/g,""),link:ll});
-    prices.sort((a,b)=>a.price-b.price);
-
-    return{ id,title,category,image,
-      rating:+rating||0,sold:+sold||0,
-      prices,bestPrice:prices[0]
-    };
+  const rows = csv.trim().split("\n").slice(1);
+  allProducts = rows.map(r=>{
+    const [id,title,category,shopee,lazada,rating,sold,image] = parseCSV(r);
+    return {id,title,category,shopee,lazada,image};
   });
   displayProducts(allProducts);
 });
@@ -186,17 +167,15 @@ function displayProducts(list){
 }
 
 function renderCard(p){
-  if(!p.bestPrice)return;
   grid.innerHTML+=`
   <div class="card">
-    <div class="badge">🔥 Best Price</div>
+    <div class="badge">🔥 Recommended</div>
     <img class="product-img" loading="lazy" src="${p.image}">
     <h3>${esc(p.title)}</h3>
-    ${p.prices.map((x,i)=>`
-      <a class="btn ${i==0?'best':''}"
-         href="/go.html?id=${encodeURIComponent(p.id)}&p=${x.platform}">
-        ${i==0?'🔥 ':''}${x.platform} ₱${x.price.toLocaleString()}
-      </a>`).join("")}
+
+    ${p.shopee?`<a class="btn shopee" href="/go.html?id=${p.id}&p=Shopee">View on Shopee</a>`:""}
+    ${p.lazada?`<a class="btn lazada" href="/go.html?id=${p.id}&p=Lazada">View on Lazada</a>`:""}
+
   </div>`;
 }
 
