@@ -1,318 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shopping Deals & Affiliate Picks | TopPickrPro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Top affiliate shopping deals in Tech, Health, and Fashion. Updated live from Google Sheets.">
-  <meta name="robots" content="index, follow">
+<meta charset="UTF-8">
+<title>Shopping Deals & Price Comparison | TopPickrPro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compare Shopee and Lazada prices. Auto-updated affiliate deals.">
+<meta name="robots" content="index,follow">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9C0Y6D9TPK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9C0Y6D9TPK');
-  </script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364);
+  background-size:400% 400%;
+  animation:bg 15s ease infinite;
+  color:#fff;
+}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    nav {
-      background: rgba(0,0,0,0.85);
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      margin: 0 15px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover { color: #ffeb3b; }
+nav{
+  position:sticky;top:0;
+  background:rgba(0,0,0,.85);
+  padding:15px;
+  text-align:center;
+  z-index:100;
+}
+nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:500}
+nav a:hover{color:#ffeb3b}
 
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-    h1 { text-align: center; }
+section{max-width:1200px;margin:auto;padding:60px 20px}
 
-    .search-bar {
-      text-align: center;
-      margin: 25px 0;
-    }
-    .search-bar input {
-      width: 90%;
-      max-width: 420px;
-      padding: 12px 18px;
-      border-radius: 25px;
-      border: none;
-      font-size: 1rem;
-    }
+.search-bar{text-align:center;margin:25px 0}
+.search-bar input{
+  width:90%;max-width:420px;
+  padding:12px 18px;
+  border-radius:25px;border:none;font-size:1rem
+}
 
-    .category-nav {
-      position: sticky;
-      top: 70px;
-      z-index: 50;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      padding: 10px;
-      border-radius: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 30px auto 40px;
-      max-width: 600px;
-    }
-    .category-nav button {
-      background: transparent;
-      border: 2px solid #ffeb3b;
-      color: #ffeb3b;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .category-nav button:hover {
-      background: #ffeb3b;
-      color: #000;
-    }
+.category-nav{
+  position:sticky;top:70px;
+  display:flex;gap:10px;justify-content:center;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(10px);
+  padding:10px;border-radius:30px;
+  max-width:600px;margin:30px auto 40px;
+}
+.category-nav button{
+  background:transparent;border:2px solid #ffeb3b;
+  color:#ffeb3b;padding:8px 16px;
+  border-radius:20px;font-weight:600;cursor:pointer
+}
+.category-nav button:hover{background:#ffeb3b;color:#000}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
 
-    .category-section {
-      grid-column: 1 / -1;
-      margin-top: 60px;
-      text-align: center;
-    }
-    .category-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-    .category-divider {
-      width: 120px;
-      height: 4px;
-      background: #ffeb3b;
-      margin: 12px auto 30px;
-      border-radius: 10px;
-    }
+.card{
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
+  padding:18px;border-radius:15px;
+  text-align:center;position:relative
+}
+.product-img{
+  width:100%;aspect-ratio:4/3;
+  object-fit:contain;background:#000;
+  border-radius:12px;margin-bottom:12px
+}
+.badge{
+  position:absolute;top:15px;left:15px;
+  background:#ff5722;padding:6px 12px;
+  border-radius:20px;font-size:.75rem;font-weight:600
+}
+.badge.top{top:50px;background:#ffeb3b;color:#000}
 
-    .card {
-      background: rgba(255,255,255,0.15);
-      border-radius: 15px;
-      padding: 18px;
-      backdrop-filter: blur(12px);
-      position: relative;
-      text-align: center;
-    }
+.btn{
+  display:block;margin:10px 0;
+  padding:10px;border-radius:25px;
+  text-decoration:none;font-weight:600;
+  background:#ffeb3b;color:#000
+}
+.btn.best{
+  background:#4caf50;
+  box-shadow:0 0 15px rgba(76,175,80,.6)
+}
 
-    .product-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: contain;
-      background: #000;
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
+.category-section{
+  grid-column:1/-1;text-align:center;margin-top:60px
+}
+.category-divider{
+  width:120px;height:4px;
+  background:#ffeb3b;margin:12px auto 30px;
+  border-radius:10px
+}
 
-    .badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: #ff5722;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .badge.top {
-      top: 50px;
-      background: #ffeb3b;
-      color: #000;
-    }
-
-    .platform {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-    .platform.shopee { background: #ee4d2d; }
-    .platform.lazada { background: #1a1aff; }
-    .platform.other { background: #444; }
-
-    .price { font-weight: 600; margin: 6px 0; }
-    .price.up { color: #ff5252; }
-    .price.down { color: #4caf50; }
-
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 22px;
-      background: #ffeb3b;
-      color: #000;
-      border-radius: 25px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      font-size: 0.85rem;
-      opacity: 0.8;
-      background: rgba(0,0,0,0.6);
-    }
-  </style>
+footer{text-align:center;padding:40px;font-size:.85rem;background:rgba(0,0,0,.6)}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <a href="https://toppickrpro.com/">Home</a>
+  <a href="/">Home</a>
   <a href="#">Shopping</a>
-  <a href="https://toppickrpro.com/privacy-policy.html">Privacy Policy</a>
 </nav>
 
 <section>
-  <h1>Shopping Deals & Affiliate Picks</h1>
-  <p style="text-align:center;max-width:800px;margin:auto;">
-    Verified affiliate products updated live from Google Sheets.
-  </p>
+  <h1 style="text-align:center">Compare Prices & Best Deals</h1>
 
   <div class="search-bar">
     <input id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
   </div>
 
   <div class="category-nav" id="categoryNav"></div>
-
   <div class="grid" id="productGrid"></div>
 </section>
 
-<footer>
-  © 2026 TopPickrPro • Affiliate links may earn commissions
-</footer>
+<footer>© 2026 TopPickrPro • Affiliate links may earn commission</footer>
 
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLM17tQ90vAyH89socUE35R31UUkISJKoiCbtP_-7xjRFae5H56B9ZaA6LAp9_spwnW-S_kW1AThba/pub?output=csv";
-const grid = document.getElementById("productGrid");
-const nav = document.getElementById("categoryNav");
-let allProducts = [];
+const SHEET_URL="PUT_YOUR_CSV_URL_HERE";
+const grid=document.getElementById("productGrid");
+const nav=document.getElementById("categoryNav");
+let allProducts=[];
 
-function parseCSV(row) {
-  return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(c => c.replace(/^"|"$/g, ""));
+function parseCSV(row){
+  const r=[],q=false;let c="";
+  for(let i=0;i<row.length;i++){
+    const ch=row[i];
+    if(ch=='"'&&row[i+1]=='"'){c+='"';i++}
+    else if(ch=='"'){}
+    else if(ch==","&&!q){r.push(c);c=""}
+    else c+=ch
+  }
+  r.push(c);return r
 }
 
-fetch(SHEET_URL)
-  .then(r => r.text())
-  .then(csv => {
-    const rows = csv.trim().split("\n").slice(1);
-    allProducts = rows.map(r => {
-      const [title, category, price, rating, sold, hot, platform, image, link] = parseCSV(r);
-      return {
-        title, category,
-        price: parseFloat(price.replace(/[^\d.]/g,"")),
-        rating: parseFloat(rating) || 0,
-        sold: parseInt(sold) || 0,
-        hot: hot === "TRUE",
-        platform,
-        platformClass: platform?.toLowerCase().includes("shopee") ? "shopee" :
-                       platform?.toLowerCase().includes("lazada") ? "lazada" : "other",
-        image,
-        link
-      };
-    });
-    displayProducts(allProducts);
+function slugify(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,"-")}
+function esc(t=""){return t.replace(/[&<>"']/g,m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]))}
+
+fetch(SHEET_URL).then(r=>r.text()).then(csv=>{
+  const rows=csv.trim().split("\n").slice(1);
+  allProducts=rows.map(r=>{
+    const[
+      id,title,category,
+      sp,sl,lp,ll,
+      rating,sold,image
+    ]=parseCSV(r);
+
+    const prices=[];
+    if(sp)prices.push({platform:"Shopee",price:+sp.replace(/\D/g,""),link:sl});
+    if(lp)prices.push({platform:"Lazada",price:+lp.replace(/\D/g,""),link:ll});
+    prices.sort((a,b)=>a.price-b.price);
+
+    return{ id,title,category,image,
+      rating:+rating||0,sold:+sold||0,
+      prices,bestPrice:prices[0]
+    };
+  });
+  displayProducts(allProducts);
+});
+
+function displayProducts(list){
+  grid.innerHTML="";nav.innerHTML="";
+  const g={};
+  list.forEach(p=>(g[p.category]=g[p.category]||[]).push(p));
+
+  Object.keys(g).forEach(c=>{
+    const id=slugify(c);
+    const b=document.createElement("button");
+    b.textContent=c;
+    b.onclick=()=>document.getElementById(id).scrollIntoView({behavior:"smooth"});
+    nav.appendChild(b);
   });
 
-function displayProducts(list) {
-  grid.innerHTML = "";
-  nav.innerHTML = "";
-
-  const grouped = {};
-  list.forEach(p => {
-    if (!grouped[p.category]) grouped[p.category] = [];
-    grouped[p.category].push(p);
-  });
-
-  Object.keys(grouped).forEach(cat => {
-    const btn = document.createElement("button");
-    btn.textContent = cat;
-    btn.onclick = () =>
-      document.getElementById("cat-"+cat).scrollIntoView({behavior:"smooth"});
-    nav.appendChild(btn);
-  });
-
-  Object.keys(grouped).forEach(cat => {
-    const sorted = grouped[cat].sort((a,b)=>
-      (b.hot-a.hot) || b.rating-a.rating || b.sold-a.sold
-    );
-    const top = sorted.slice(0,3);
-    const rest = sorted.slice(3);
-
-    grid.innerHTML += `
-      <div id="cat-${cat}" class="category-section">
-        <div class="category-title">⭐ Top ${cat} Picks</div>
+  Object.keys(g).forEach(c=>{
+    const id=slugify(c);
+    grid.innerHTML+=`
+      <div id="${id}" class="category-section">
+        <h2>${esc(c)}</h2>
         <div class="category-divider"></div>
       </div>`;
-    top.forEach(p=>renderCard(p,true));
-
-    if(rest.length){
-      grid.innerHTML += `
-        <div class="category-section">
-          <div class="category-title">${cat} Deals</div>
-          <div class="category-divider"></div>
-        </div>`;
-      rest.forEach(p=>renderCard(p,false));
-    }
+    g[c].forEach(p=>renderCard(p));
   });
 }
 
-function renderCard(p,isTop){
-  grid.innerHTML += `
-    <div class="card">
-      ${p.hot?`<div class="badge">🔥 Hot</div>`:""}
-      ${isTop?`<div class="badge top">⭐ Top Pick</div>`:""}
-      <div class="platform ${p.platformClass}">${p.platform}</div>
-      <img class="product-img" src="${p.image}">
-      <h3>${p.title}</h3>
-      <div class="price">₱${p.price.toLocaleString()}</div>
-      <a class="btn" href="/go?product=${encodeURIComponent(p.title)}"
-         onclick="gtag('event','affiliate_click',{event_label:'${p.title}'})">
-         View Deal
-      </a>
-    </div>`;
+function renderCard(p){
+  if(!p.bestPrice)return;
+  grid.innerHTML+=`
+  <div class="card">
+    <div class="badge">🔥 Best Price</div>
+    <img class="product-img" loading="lazy" src="${p.image}">
+    <h3>${esc(p.title)}</h3>
+    ${p.prices.map((x,i)=>`
+      <a class="btn ${i==0?'best':''}"
+         href="/go.html?id=${encodeURIComponent(p.id)}&p=${x.platform}">
+        ${i==0?'🔥 ':''}${x.platform} ₱${x.price.toLocaleString()}
+      </a>`).join("")}
+  </div>`;
 }
 
 function searchProducts(){
-  const q = searchInput.value.toLowerCase();
-  displayProducts(allProducts.filter(p =>
-    p.title.toLowerCase().includes(q) ||
+  const q=searchInput.value.toLowerCase();
+  displayProducts(allProducts.filter(p=>
+    p.title.toLowerCase().includes(q)||
     p.category.toLowerCase().includes(q)
   ));
 }
